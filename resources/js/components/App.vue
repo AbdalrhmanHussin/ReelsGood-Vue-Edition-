@@ -114,9 +114,10 @@
 
         },
         methods: {
-            ...mapActions([
-                'genres'
-            ]),
+           genres()
+           {
+
+           },
 
             resizeHandler() {
                 this.windowWidth = this.window.innerWidth;
