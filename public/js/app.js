@@ -19487,6 +19487,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {},
   methods: {
+    genres: function genres() {},
     resizeHandler: function resizeHandler() {
       this.windowWidth = this.window.innerWidth;
     }

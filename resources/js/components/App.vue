@@ -116,7 +116,10 @@
 
         },
         methods: {
+            genres()
+            {
 
+            },
             resizeHandler() {
                 this.windowWidth = this.window.innerWidth;
             }
