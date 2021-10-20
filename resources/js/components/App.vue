@@ -118,6 +118,7 @@
 
         },
         mounted() {
+            this.genres();
             window.addEventListener('resize', this.resizeHandler);
         }
     })

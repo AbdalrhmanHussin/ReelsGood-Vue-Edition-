@@ -19487,6 +19487,7 @@ __webpack_require__.r(__webpack_exports__);
   computed: {},
   methods: {},
   mounted: function mounted() {
+    this.genres();
     window.addEventListener('resize', this.resizeHandler);
   }
 });
