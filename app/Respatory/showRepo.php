@@ -3,7 +3,6 @@
 namespace App\Respatory;
 
 use App\Models\show;
-use App\Respatory\showRepointerface;
 use Closure;
 use Exception;
 use Illuminate\Contracts\Support\Arrayable;
