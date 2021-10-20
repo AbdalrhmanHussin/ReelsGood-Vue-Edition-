@@ -110,24 +110,15 @@
             }
         },
         computed: {
-            ...mapGetters([
-                'genre'
-            ]),
+          
 
         },
         methods: {
-            ...mapActions([
-                'genres'
-            ]),
-
-            resizeHandler() {
-                this.windowWidth = this.window.innerWidth;
-            }
+           
 
         },
         mounted() {
-            this.genres();
-            window.addEventListener('resize', this.resizeHandler);
+           
         }
     })
 
