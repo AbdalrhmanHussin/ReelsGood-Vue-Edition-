@@ -19487,7 +19487,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {},
   methods: {
-    genres: function genres() {},
+    genres: function genres() {
+      this.$store.dispatch('genres');
+    },
     resizeHandler: function resizeHandler() {
       this.windowWidth = this.window.innerWidth;
     }
@@ -19528,7 +19530,7 @@ var _hoisted_4 = {
 };
 
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: "/images/system/loupe.png",
+  src: "/images/system/logo.svg",
   ult: "Reelsgood"
 }, null, -1
 /* HOISTED */
