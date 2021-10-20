@@ -114,7 +114,13 @@
 
         },
         methods: {
-           
+            ...mapActions([
+                'genres'
+            ]),
+
+            resizeHandler() {
+                this.windowWidth = this.window.innerWidth;
+            }
 
         },
         mounted() {
