@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Respatory\showRepo;
+use App\Result\Result;
 use Illuminate\Http\Request;
 
 class ShowController extends Controller
@@ -26,15 +27,16 @@ class ShowController extends Controller
     }
 
     /**
-     * Get genre for tv | movie
-     * @param show 
-     * @return array => genres
-    */
-
-    public function genre(string $show)
+     * Get genre of show type
+     * @param type => movie tv
+     * @return bool message 
+     * @return array payload => genre
+     */
+    public function genre_id($type)
     {
-        $genre = $this->show->genre_id($show);
-        return $genre;
+        $genre = $this->show->genre_id($type);
+
+        return Result::response(true,$genre);
     }
 
     /**

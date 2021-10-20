@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'genre'],function(){
     Route::get('/',[ShowController::class,'genre_ids']);
-    Route::get('/{type}',[ShowController::class,'genre']);
+    Route::get('/{type}',[ShowController::class,'genre_id']);
 });
 
 /** ======================= Shows Routes ================== */
