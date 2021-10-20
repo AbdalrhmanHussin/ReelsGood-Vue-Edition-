@@ -108,19 +108,14 @@
                 window: window,
                 windowWidth: window.innerWidth,
                 openNav: false,
-                search: false
+                search: false,
             }
         },
         computed: {
-            ...mapGetters([
-                'genre'
-            ]),
+        
 
         },
         methods: {
-            ...mapActions([
-                'genres'
-            ]),
 
             resizeHandler() {
                 this.windowWidth = this.window.innerWidth;
