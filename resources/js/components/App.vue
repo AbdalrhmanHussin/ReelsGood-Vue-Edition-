@@ -16,10 +16,10 @@
                                     Tv Shows
                                     <!-- Drop Menu -->
                                     <div class="drop-genre position-absolute">
-                                        <ul class="drop-menu d-grid gridx3 navbar-nav">
+                                        <!-- <ul class="drop-menu d-grid gridx3 navbar-nav">
                                             <li class="nav-item fs-12" v-for="(gen,index) in genre['tv']" :key="index">
                                                 {{ gen }}</li>
-                                        </ul>
+                                        </ul> -->
                                     </div>
                                 </li>
                             </a>
@@ -28,10 +28,10 @@
                                     Movies
                                     <!-- Drop Menu -->
                                     <div class="drop-genre position-absolute ">
-                                        <ul class="drop-menu d-grid gridx3 navbar-nav">
+                                        <!-- <ul class="drop-menu d-grid gridx3 navbar-nav">
                                             <li class="nav-item fs-12" v-for="(gen,index) in genre['movies']"
                                                 :key="index">{{ gen }}</li>
-                                        </ul>
+                                        </ul> -->
                                     </div>
                                 </li>
                             </a>

@@ -19537,38 +19537,28 @@ var _hoisted_6 = {
   key: 0,
   "class": "navbar-nav mr-auto menu"
 };
-var _hoisted_7 = {
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
   href: "#"
-};
-var _hoisted_8 = {
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "menu-item position-relative"
-};
-
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Tv Shows ");
-
-var _hoisted_10 = {
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Tv Shows "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Drop Menu "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "drop-genre position-absolute"
-};
-var _hoisted_11 = {
-  "class": "drop-menu d-grid gridx3 navbar-nav"
-};
-var _hoisted_12 = {
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <ul class=\"drop-menu d-grid gridx3 navbar-nav\">\r\n                                            <li class=\"nav-item fs-12\" v-for=\"(gen,index) in genre['tv']\" :key=\"index\">\r\n                                                {{ gen }}</li>\r\n                                        </ul> ")])])], -1
+/* HOISTED */
+);
+
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
   href: "#"
-};
-var _hoisted_13 = {
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "menu-item position-relative"
-};
-
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Movies ");
-
-var _hoisted_15 = {
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Movies "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Drop Menu "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "drop-genre position-absolute"
-};
-var _hoisted_16 = {
-  "class": "drop-menu d-grid gridx3 navbar-nav"
-};
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <ul class=\"drop-menu d-grid gridx3 navbar-nav\">\r\n                                            <li class=\"nav-item fs-12\" v-for=\"(gen,index) in genre['movies']\"\r\n                                                :key=\"index\">{{ gen }}</li>\r\n                                        </ul> ")])])], -1
+/* HOISTED */
+);
 
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
   href: "#"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", {
   "class": "menu-item position-relative"
@@ -19576,49 +19566,50 @@ var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_18 = {
+var _hoisted_10 = [_hoisted_7, _hoisted_8, _hoisted_9];
+var _hoisted_11 = {
   "class": "toggler-btn d-flex"
 };
-var _hoisted_19 = {
+var _hoisted_12 = {
   key: 0,
   "class": "icon-user"
 };
 
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "ri-user-2-fill pr-3"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_21 = [_hoisted_20];
+var _hoisted_14 = [_hoisted_13];
 
-var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "ri-search-2-line ml-auto"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_23 = [_hoisted_22];
-var _hoisted_24 = {
+var _hoisted_16 = [_hoisted_15];
+var _hoisted_17 = {
   key: 0,
   "class": "navbar-nav ml-auto menu"
 };
 
-var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<a href=\"#\"><li class=\"nav-item menu-item\"> Login </li></a><span class=\"menu-item\">|</span><a href=\"#\"><li class=\"nav-item menu-item\"> Register </li></a>", 3);
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<a href=\"#\"><li class=\"nav-item menu-item\"> Login </li></a><span class=\"menu-item\">|</span><a href=\"#\"><li class=\"nav-item menu-item\"> Register </li></a>", 3);
 
-var _hoisted_28 = {
+var _hoisted_21 = {
   "class": "form-group w-100 position-relative m-0"
 };
 
-var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "ri-close-circle-line ml-auto fs-15 color-wh"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_30 = [_hoisted_29];
+var _hoisted_23 = [_hoisted_22];
 
-var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
   type: "search",
   placeholder: "Where To Stream Anything",
   "class": "search"
@@ -19626,9 +19617,9 @@ var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"search-result mb-2\"><h3 class=\"fs-13 color-wh mb-0\">League of leagend </h3><span class=\"d-flex fs-12 color-sv\">Movie</span></div><div class=\"search-result mb-2\"><h3 class=\"fs-13 color-wh mb-0\">Tommorrow land</h3><span class=\"d-flex fs-12 color-sv\">Movie</span></div>", 2);
+var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"search-result mb-2\"><h3 class=\"fs-13 color-wh mb-0\">League of leagend </h3><span class=\"d-flex fs-12 color-sv\">Movie</span></div><div class=\"search-result mb-2\"><h3 class=\"fs-13 color-wh mb-0\">Tommorrow land</h3><span class=\"d-flex fs-12 color-sv\">Movie</span></div>", 2);
 
-var _hoisted_34 = [_hoisted_32];
+var _hoisted_27 = [_hoisted_25];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
     "class": "ri-menu-2-line",
@@ -19643,52 +19634,34 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
           'container d-flex flex-column justify-content-start align-items-start': $data.windowWidth < 992
         }, "d-flex"])
-      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Drop Menu "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_11, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.genre['tv'], function (gen, index) {
-        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", {
-          "class": "nav-item fs-12",
-          key: index
-        }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(gen), 1
-        /* TEXT */
-        );
-      }), 128
-      /* KEYED_FRAGMENT */
-      ))])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Drop Menu "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_16, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.genre['movies'], function (gen, index) {
-        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", {
-          "class": "nav-item fs-12",
-          key: index
-        }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(gen), 1
-        /* TEXT */
-        );
-      }), 128
-      /* KEYED_FRAGMENT */
-      ))])])])]), _hoisted_17], 2
+      }, _hoisted_10, 2
       /* CLASS */
       )])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)];
     }),
     _: 1
     /* STABLE */
 
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Right Side Of Navbar "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("Toggle Btn"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [$data.windowWidth < 587 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", _hoisted_19, _hoisted_21)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.windowWidth < 992 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Right Side Of Navbar "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("Toggle Btn"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [$data.windowWidth < 587 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", _hoisted_12, _hoisted_14)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.windowWidth < 992 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
     key: 1,
     "class": "icon-search",
     onClick: _cache[1] || (_cache[1] = function ($event) {
       return $data.search = !$data.search;
     })
-  }, _hoisted_23)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), $data.windowWidth > 587 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("ul", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Authentication Links "), _hoisted_25])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+  }, _hoisted_16)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), $data.windowWidth > 587 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("ul", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Authentication Links "), _hoisted_18])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
     action: "",
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["search", {
       'active': $data.windowWidth < 992 && $data.search
     }])
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
     "class": "position-absolute right-0 color-wh p-3 close",
     onClick: _cache[2] || (_cache[2] = function ($event) {
       return $data.search = !$data.search;
     })
-  }, _hoisted_30), _hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  }, _hoisted_23), _hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["search-container p-2 position-absolute", {
       'w-100 border-rd-0': $data.windowWidth < 922
     }])
-  }, _hoisted_34, 2
+  }, _hoisted_27, 2
   /* CLASS */
   )])], 2
   /* CLASS */
