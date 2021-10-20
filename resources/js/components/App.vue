@@ -94,6 +94,41 @@
 </template>
 
 <script>
+    import {
+        mapActions
+    } from 'vuex';
+    import {
+        mapGetters
+    } from 'vuex';
 
+    export default ({
+        data() {
+            return {
+                openNav: false,
+                search: false,
+                searchArr: []
+            }
+        },
+        computed: {
+            ...mapGetters([
+                'genre'
+            ]),
+
+        },
+        methods: {
+            ...mapActions([
+                'genres'
+            ]),
+
+            resizeHandler() {
+                this.windowWidth = this.window.innerWidth;
+            }
+
+        },
+        mounted() {
+            this.genres();
+            window.addEventListener('resize', this.resizeHandler);
+        }
+    })
 
 </script>
