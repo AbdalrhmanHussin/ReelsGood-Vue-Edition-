@@ -19528,7 +19528,7 @@ var _hoisted_4 = {
 };
 
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: "/images/system/logo.svg",
+  src: "/images/system/loupe.png",
   ult: "Reelsgood"
 }, null, -1
 /* HOISTED */
