@@ -118,7 +118,7 @@
 
         },
         mounted() {
-           
+            window.addEventListener('resize', this.resizeHandler);
         }
     })
 

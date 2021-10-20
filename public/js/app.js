@@ -19486,7 +19486,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {},
   methods: {},
-  mounted: function mounted() {}
+  mounted: function mounted() {
+    window.addEventListener('resize', this.resizeHandler);
+  }
 });
 
 /***/ }),
