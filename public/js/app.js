@@ -19848,6 +19848,9 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_1__.createStore)({
     genres: function genres(_ref) {
       var state = _ref.state,
           commit = _ref.commit;
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get('/genre/').then(function (res) {
+        commit('genre', res.data);
+      });
     }
   }
 });

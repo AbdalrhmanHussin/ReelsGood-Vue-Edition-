@@ -27,7 +27,9 @@ const store = createStore({
         // Get All genres
         genres({state,commit})
         {
-            
+            axios.get('/genre/').then((res) => {
+                commit('genre',res.data);
+            })
         }
     }
 });
