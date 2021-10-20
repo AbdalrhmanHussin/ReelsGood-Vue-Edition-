@@ -16,10 +16,10 @@
                                     Tv Shows
                                     <!-- Drop Menu -->
                                     <div class="drop-genre position-absolute">
-                                        <!-- <ul class="drop-menu d-grid gridx3 navbar-nav">
+                                        <ul class="drop-menu d-grid gridx3 navbar-nav">
                                             <li class="nav-item fs-12" v-for="(gen,index) in genre['tv']" :key="index">
                                                 {{ gen }}</li>
-                                        </ul> -->
+                                        </ul>
                                     </div>
                                 </li>
                             </a>
@@ -28,10 +28,10 @@
                                     Movies
                                     <!-- Drop Menu -->
                                     <div class="drop-genre position-absolute ">
-                                        <!-- <ul class="drop-menu d-grid gridx3 navbar-nav">
+                                        <ul class="drop-menu d-grid gridx3 navbar-nav">
                                             <li class="nav-item fs-12" v-for="(gen,index) in genre['movies']"
                                                 :key="index">{{ gen }}</li>
-                                        </ul> -->
+                                        </ul>
                                     </div>
                                 </li>
                             </a>
@@ -72,12 +72,12 @@
                     </a>
                 </ul>
                 <form action="" class="search" :class="{'active': windowWidth < 992 && search}">
-                   <div class="form-group w-100 position-relative m-0">
+                   <div class="form-group w-100 h-100 position-relative m-0">
                         <label class="position-absolute right-0 color-wh p-3 close" @click="search =! search">
                             <i class="ri-close-circle-line ml-auto fs-15  color-wh "></i>
                         </label>
                         <input type="search" placeholder="Where To Stream Anything" class="search">
-                        <div class="search-container p-2 position-absolute" :class="{'w-100 border-rd-0': windowWidth < 922}">
+                        <div class="search-container p-2 position-absolute" :class="{'w-100': windowWidth < 922}" v-if="searchArr.length > 0">
                             <div class="search-result mb-2">
                                 <h3 class="fs-13 color-wh mb-0">League of leagend </h3>
                                 <span class="d-flex fs-12 color-sv">Movie</span>
@@ -109,17 +109,20 @@
                 windowWidth: window.innerWidth,
                 openNav: false,
                 search: false,
+                searchArr: []
             }
         },
         computed: {
-        
+            ...mapGetters([
+                'genre'
+            ]),
 
         },
         methods: {
-            genres()
-            {
-                this.$store.dispatch('genres')
-            },
+            ...mapActions([
+                'genres'
+            ]),
+
             resizeHandler() {
                 this.windowWidth = this.window.innerWidth;
             }
