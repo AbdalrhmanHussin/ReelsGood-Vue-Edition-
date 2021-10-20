@@ -4,6 +4,7 @@
             <div class="container">
                 <a class="navbar-brand d-flex" href="#">
                     <i class="ri-menu-2-line" @click="openNav =! openNav"></i>
+                    <img src="/images/system/logo.svg" alt="logo">
                 </a>
                 <!-- Left Side Of Navbar -->
                 <transition name="list">
