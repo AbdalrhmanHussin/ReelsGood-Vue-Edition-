@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Reelsgood</title>
         <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+        <link href="{{ secure_asset('css/styles.css') }}" rel="stylesheet">
         <!-- Fonts -->
     </head>
     <body class="antialiased">
