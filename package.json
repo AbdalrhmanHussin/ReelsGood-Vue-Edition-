@@ -28,6 +28,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "@splidejs/vue-splide": "^0.5.2",
         "holtdataformate": "^1.0.0",
         "vue-router": "^4.0.12",
         "vuex": "^4.0.2"

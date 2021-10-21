@@ -3,14 +3,17 @@ import { createRouter, createWebHistory } from 'vue-router';
 //Components Import
 
 import App from './components/App.vue';
-
-import MainLayout from './components/Layouts/MainLayout.vue'
+import AppLayout from './components/Layouts/MainLayout.vue'
+import discover from './components/Pages/discover.vue'
 
 
 const router = new createRouter({
     history: createWebHistory(),
     routes: [
-        {path:'/',component:App,name:'home',children:[
+        {path:'',component:App,children:[
+            {path:'',component:AppLayout,children:[
+                {path: '',component:discover,name:'discover'}
+            ]}
         ]}
     ]
 });

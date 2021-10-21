@@ -2,6 +2,8 @@
 @import url('https://pro.fontawesome.com/releases/v5.10.0/css/all.css');
 @import url('https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css');
 @import url('animation.css');
+@import url('advStyles.css');
+
 :root {
     --old-green: #0a1016;
     --off-white: #e6e6e6;
@@ -210,6 +212,7 @@ a:hover {
 /*containers*/
 .rg-container {
     max-width: 1500px;
+    width: 100%;
     padding: 0 64px;
     margin: 0 auto;
 }
