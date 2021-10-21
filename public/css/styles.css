@@ -470,6 +470,7 @@ nav .menu .menu-item .drop-genre {
     left: 0;
     top: 37px;
     padding: 7px 0;
+    backdrop-filter: blur(14px);
 }
 
 nav .menu a:hover .drop-genre   {
