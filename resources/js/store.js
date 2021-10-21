@@ -18,7 +18,6 @@ const store = createStore({
         genre(state,payload) 
         {
             state.genres = payload;
-            console.log(state.genres['movies']);
         }
     },
 

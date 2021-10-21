@@ -54,7 +54,9 @@ class ShowController extends Controller
                       ->sortBy($sort)
                       ->page($page)
                       ->get();
-        dd($shows);
+        if($type == 'person') {
+            $shows = $this->show->collected('chunk',$shows['results'],2);
+        }
         return $shows;
     }
 
@@ -111,6 +113,14 @@ class ShowController extends Controller
 
         return $shows;
 
+    }
+
+    public function people()
+    {
+        $ppl = $this->show
+                    ->type('person')
+                    ->get();
+        return $ppl;
     }
 
 }

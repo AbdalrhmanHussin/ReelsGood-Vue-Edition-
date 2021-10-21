@@ -158,7 +158,7 @@ class showRepo implements showRepoInterface {
     public function genre_ids()
     {
         return [
-            'movies' => $this->genre_id('movie')->toArray(),
+            'movie' => $this->genre_id('movie')->toArray(),
             'tv'     => $this->genre_id('tv')->toArray()
         ];
     }

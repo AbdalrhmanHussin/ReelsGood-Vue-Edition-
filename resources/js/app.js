@@ -9,10 +9,22 @@ import '@splidejs/splide/dist/css/themes/splide-skyblue.min.css';
 
 
 import AppComponent from './components/App.vue'
+
+import {mapActions} from 'vuex';
+
 let app = createApp({
     components: {
         AppComponent,
     },
+    methods: {
+        ...mapActions ([
+            'genres'
+        ])
+    },
+
+    mounted() {
+        this.genres();
+    }
 });
 
 app.use(router)

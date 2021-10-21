@@ -1,15 +1,65 @@
 <template>
     <div class="p-discover">
-        <x-loginask1></x-loginask1>
+
+        <!-- Ask to login -->
+        <x-loginask1  :img="'https://assets.reelgood.com/p/90ec3ad033b1f255b779a53bab8a2b59f6d42043/9a68f64e.png'" 
+                                  :title="'The Best Movie & TV Tracker'"
+                                  :text="'Track all the shows you watch & add movies you want to see and Reelgood will always have what you should watch next queued up!'"
+        ></x-loginask1>
+
+        <!-- Content -->
+        <div class="p-content rg-container">
+           <section class="mt-4 sec">
+                <h3 class="sec-title">Popular Movies</h3>
+                <sw-sql type="movie"></sw-sql>
+           </section>
+           <section class="mt-4 sec">
+                <h3 class="sec-title">Top Tv Shows</h3>
+                <sw-sql type="tv" sort="top_rated"></sw-sql>
+           </section>
+        </div>
+
+        <!-- Ask to login -->
+        <x-loginask1 class="mt-5" :img="'https://assets.reelgood.com/p/90ec3ad033b1f255b779a53bab8a2b59f6d42043/fe0a6224.png'" 
+                                  :title="'See Where to Watch... Anything'"
+                                  :text="'Search, browse, and get recommended movies and tv shows from across over 150+ sources. Is it on one you have? Great! If not we\'ll give you the cheapest option available.'"
+        ></x-loginask1>
+
+        <!-- Content -->
+        <div class="p-content rg-container">
+            <section class="mt-4 sec">
+                <h3 class="sec-title">Popular Actors</h3>
+                <pr-sql type="person"></pr-sql>
+           </section>
+        </div>
+
     </div>
 </template>
 <script>
 
 import Login1 from '../Fragments/LoginAsk1.vue';
+import swSql from '../Spliders/sw-spl.vue'
+import prSql from '../Spliders/pr-sql.vue'
+import { mapActions } from 'vuex';
 
 export default ({
     components: {
-        'x-loginask1': Login1
+        'x-loginask1': Login1,
+        'sw-sql': swSql,
+        'pr-sql': prSql
     },
+    computed: {
+        
+    },
+
+    methods: {
+        ...mapActions ([
+            'genres'
+        ])
+    },
+
+    mounted() {
+        this.genres()
+    }
 })
 </script>

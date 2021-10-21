@@ -125,7 +125,6 @@ export default ({
 
         resizeHandler() {
             this.windowWidth = this.window.innerWidth;
-            console.log(this.windowWidth)
         }
 
     },

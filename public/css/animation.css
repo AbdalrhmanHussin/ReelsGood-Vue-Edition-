@@ -13,7 +13,12 @@
 
 .list-enter-active,
 .list-leave-active{
-    transition: all 0.2s linear;
+    transition: all .4s linear;
+    position: absolute;
+}
+
+.list-move {
+    position: absolute;
 }
 
 

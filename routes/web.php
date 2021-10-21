@@ -25,11 +25,13 @@ Route::group(['prefix' => 'genre'],function(){
 /** ======================= Shows Routes ================== */
 
 Route::group(['prefix' => 'show'],function(){
-    Route::get('/find/{type}/{id}',[ShowController::class,'find']);
-    Route::get('/category/{id}/{type}/{page?}',[ShowController::class,'getByCategory']);
-    Route::get('/search/{type}/{search}/{limit?}',[ShowController::class,'search']);
-    Route::get('/{type}/{page?}/{sort?}',[ShowController::class,'get']);
+    Route::post('/find/{type}/{id}',[ShowController::class,'find']);
+    Route::post('/category/{id}/{type}/{page?}',[ShowController::class,'getByCategory']);
+    Route::post('/search/{type}/{search}/{limit?}',[ShowController::class,'search']);
+    Route::post('/{type}/{page?}/{sort?}',[ShowController::class,'get']);
 });
+
+Route::get('/test',[ShowController::class,'people']);
 
 
 /** ======================= Vue =========================== */

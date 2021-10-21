@@ -2,7 +2,7 @@ import helpers from './helper'
 
 const plugin = {
     install (app) {
-      app.config.globalProperties.foo = helpers
+      app.config.globalProperties.collector = helpers
     }
 }
 
