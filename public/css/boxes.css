@@ -1,6 +1,7 @@
 /*sm box */
 .sw-card-container,
-.sw-box-skeleton {
+.sw-box-skeleton,
+.sw-see {
     width: 165px;
     height: 238px;
 }
@@ -49,18 +50,24 @@
 
 .mini {
     color: var(--white);
-    background: #00000057;
-    padding: 1.5px 5.5px !important;
+    background: var(--shadow);
+    padding: 1.5px 3.5px !important;
     border-radius: 20px;
     border: 2px solid var(--gray);
-    font-size: 8px;
-    width: 24px;
+    font-size: 13px;
+    width: fit-content;
+    max-width: 24px;
     height: 24px;
-    display: flex;
     transition: all .04s linear;
     justify-content: start;
     overflow: hidden;
     cursor: pointer;
+    transition: all .3s linear;
+    white-space: nowrap;
+}
+
+.mini:hover {
+    max-width: 300px;
 }
 
 .mini-holder {
@@ -71,16 +78,11 @@
     background-color: #0005;
 }
 
-.mini {
-    transition: all .3s linear;
-}
 
 .mini span {
     padding-left: .5rem !important;
 }
 
-.mini:hover,
-.mini-container:hover .mini,
 .actionbtn.active,
 .actionbtn:hover {
     width: 70px;

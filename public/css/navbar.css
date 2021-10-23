@@ -1,5 +1,11 @@
 /* navbar */
 
+nav.scrolled {
+    z-index: 100;
+    background: var(--old-green);
+    border-bottom: 4px solid var(--dark);
+}
+
 nav .navbar-brand img {
     width: 100px;
 }

@@ -1,30 +1,25 @@
 <template>
-    <div class="sw-splider">
-        <!-- Loader -->
-        <transition name="list">
-            <pr-skeleton v-if="skeleton"></pr-skeleton>
-        </transition>
-        <!-- Data Slider-->
-        <transition name="list">
-            <Splide :options="options" v-if="!skeleton">
-                <SplideSlide v-for="(show,index) in shows" :key="index">
-                    <div class="collection ml-2 mt-2" v-for="(collection,index) in show" :key="index">
-                        <div class="actor-circle mb-2 d-flex  align-items-center">
-                            <div class="letters d-flex justify-content-center align-items-center fs-12 color-wh" :style="{'background-color': this.collector.getRandColor()}">
-                                {{ collector.getFirstLetters(collection['name']) }}
-                            </div>
-                            <p class="mb-0 pl-2 fs-12">{{collection['name']}}</p>
-                        </div>
-                    </div>
-                </SplideSlide>
-            </Splide>
-        </transition>
-    </div>
+   <div class="sw-splider">
+       <!-- Loader -->
+       <transition name="list">
+           <sw-skeleton v-if="skeleton"></sw-skeleton>
+       </transition>
+       <!-- Data Slider -->
+       <transition name="list">
+           <Splide :options="options" v-if="!skeleton">
+               <SplideSlide v-for="(show,index) in shows" :key="index">
+                    <med-box :show="show"></med-box>    
+               </SplideSlide>
+        </Splide>
+       </transition>
+   </div>
 </template>
 
 <script>
 import axios from 'axios';
-import prSkeleton from '../skeletons/pr-skeleton.vue'
+import swSkeleton from '../skeletons/sw-skeleton.vue'
+import mdBox from '../Boxes/med-box.vue';
+
 import { mapGetters } from 'vuex'
 
 export default ({
@@ -46,26 +41,28 @@ export default ({
     data() {
         return {
             shows: [],
+            genraSet: {18:'Action'},
             skeleton: true,
             options: {
                 rewind: false,
                 perPage: 5,
                 pagination: false,
+                padding: { top: 10, bottom: 20 },
                 breakpoints: {
-                    1400: {
-                        perPage: 5,
-                    },
-
                     1100: {
-                        perPage: 4
+                        perPage: 5
                     },
 
-                   700: {
+                    992: {
                         perPage: 3
                     },
 
-                    580: {
+                   700: {
                         perPage: 2
+                    },
+
+                    580: {
+                        perPage: 1
                     }
                 }
             }
@@ -73,7 +70,8 @@ export default ({
     },
 
     components: {
-        'pr-skeleton': prSkeleton,
+        'sw-skeleton': swSkeleton,
+        'med-box': mdBox
     },
 
     computed: {
@@ -99,14 +97,14 @@ export default ({
         {
             /** get the decalred show */
             axios.post(`show/${this.type}/1/${this.sortBy}`).then((res) => {
-                this.shows = res.data;
-                                console.log(this.shows)
+                this.shows = res.data.results;
+                console.log(this.shows);
                 this.skeleton = false
             })
         }
     }, 
 
-     mounted() {
+    mounted() {
         this.getShows();
     }
 })

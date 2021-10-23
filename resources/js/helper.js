@@ -20,7 +20,6 @@ export default {
         {
             let rand = Math.floor(Math.random() * 255);
             colors.push(rand);
-            console.log(Math.random() * 255,colors)
         }
         let color = `${colors[0],colors[1],colors[2],0}`
         return `rgba(${colors[0]+','+colors[1]+','+colors[2]+','+'0.6'})`

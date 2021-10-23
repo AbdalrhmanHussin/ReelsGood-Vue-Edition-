@@ -33,6 +33,13 @@
            </section>
         </div>
 
+        <div class="p-content rg-container">
+            <section class="mt-4 sec">
+                <h3 class="sec-title">Top Rated Movies</h3>
+                <med-sql type="movie" sort="now_playing"></med-sql>
+           </section>
+        </div>
+
     </div>
 </template>
 <script>
@@ -40,13 +47,16 @@
 import Login1 from '../Fragments/LoginAsk1.vue';
 import swSql from '../Spliders/sw-spl.vue'
 import prSql from '../Spliders/pr-sql.vue'
+import mdSql from '../Spliders/med-sql.vue'
+
 import { mapActions } from 'vuex';
 
 export default ({
     components: {
         'x-loginask1': Login1,
         'sw-sql': swSql,
-        'pr-sql': prSql
+        'pr-sql': prSql,
+        'med-sql': mdSql
     },
     computed: {
         

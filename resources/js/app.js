@@ -4,6 +4,22 @@ import store  from './store.js';
 import plugin from './collectors.js';
 import VueSplide from '@splidejs/vue-splide';
 import '@splidejs/splide/dist/css/themes/splide-skyblue.min.css';
+import VueProgressBar from "@aacassandra/vue3-progressbar";
+
+
+const options = {
+    color: "#00dc89",
+    failedColor: "#874b4b",
+    thickness: "2.5px",
+    transition: {
+      speed: "0.2s",
+      opacity: "0.6s",
+      termination: 300,
+    },
+    autoRevert: true,
+    location: "left",
+    inverse: false,
+};
 
 
 
@@ -15,6 +31,18 @@ import {mapActions} from 'vuex';
 let app = createApp({
     components: {
         AppComponent,
+    },
+    data() {
+        return {
+            windowPerformace: window.performance.timeOrigin
+        }
+    },
+    watch() 
+    {
+        windowPerformace()
+        {
+            console.log(this.windowPerformace)
+        }
     },
     methods: {
         ...mapActions ([
@@ -31,4 +59,5 @@ app.use(router)
    .use(plugin)
    .use(store)
    .use(VueSplide)
+   .use(VueProgressBar, options)
    .mount("#app")
