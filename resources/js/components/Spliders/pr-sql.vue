@@ -25,7 +25,7 @@
 <script>
 import axios from 'axios';
 import prSkeleton from '../skeletons/pr-skeleton.vue'
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default ({
     props: {
@@ -40,7 +40,7 @@ export default ({
             }
         },
         'sort': {
-
+            default: 'popular'
         }
     },
     data() {
@@ -65,7 +65,7 @@ export default ({
                     },
 
                     580: {
-                        perPage: 2
+                        perPage: 1
                     }
                 }
             }
@@ -84,30 +84,24 @@ export default ({
         chunkedItems () {
             
         },
-
-        sortBy() {
-            if(this.sort == undefined) {
-                return 'popular'
-            } else {
-                return this.sort;
-            }
-        }
     },
 
     methods: {
-        getShows() 
-        {
-            /** get the decalred show */
-            axios.post(`show/${this.type}/1/${this.sortBy}`).then((res) => {
-                this.shows = res.data;
-                                console.log(this.shows)
-                this.skeleton = false
-            })
-        }
+       ...mapActions([
+           'getShows'
+       ])
     }, 
 
      mounted() {
-        this.getShows();
+        this.getShows({
+            type: this.type,
+            sort: 'popular',
+            page: 1
+        }).then((res) => {
+            console.log(res);
+            this.skeleton = false;
+            this.shows = res;
+        });
     }
 })
 </script>

@@ -1,8 +1,8 @@
 <template>
     <vue-progress-bar></vue-progress-bar>
-    <nav v-if="fixedNav || !navAction" :style="{'background-color': this.collector.getRandColor(),'height': navHeight + 'px'}"></nav>
+    <nav class="nav-clone"></nav>
     <transition name="navbar">
-        <nav class="navbar navbar-expand-md navbar-light shadow-sm w-100" :class="{'position-fixed top-0 scrolled': fixedNav}" v-if="navAction" ref="nav">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm w-100 position-absolute top-0" :class="{'position-fixed top-0 scrolled': fixedNav}" v-if="navAction" ref="nav">
             <div class="rg-container d-flex">
                 <a class="navbar-brand d-flex" href="#">
                     <i class="ri-menu-2-line" @click="openNav =! openNav"></i>
@@ -51,7 +51,7 @@
 
                 <!--Toggle Btn-->
                 <div class="toggler-btn d-flex ml-auto">
-                    <button class="icon-user" v-if="windowWidth < 587">
+                    <button class="icon-user" v-if="windowWidth < 992">
                         <i class="ri-user-2-fill  pr-3"></i>
                     </button>
 
@@ -60,7 +60,7 @@
                     </button>
                 </div>
 
-                <ul class="navbar-nav ml-auto menu" v-if="windowWidth > 587">
+                <ul class="navbar-nav ml-auto menu" v-if="windowWidth > 992">
                     <!-- Authentication Links -->
                     <a href="#">
                         <li class="nav-item menu-item">
@@ -114,7 +114,7 @@ export default ({
             windowWidth: window.innerWidth,
             openNav: false,
             search: false,
-            navbar: true,
+            navbarFirstFix: true,
             windowScroll: 0,
             searchArr: [],
             fixedNav: false,
@@ -144,21 +144,19 @@ export default ({
         scrollNav()
         {
             let oldScroll = this.window.scrollY;
-
-            if(oldScroll < this.windowScroll && window.scrollY > 300)
+            if(oldScroll < this.windowScroll && this.window.scrollY > 0)
             {
                 this.navAction = true;
-                this.fixedNav  = true;
-            } else {
-                this.fixedNav  = false;
+                this.fixedNav  = true
+            } else if (oldScroll > this.windowScroll && this.windowScroll > 0) {
+                if(this.fixedNav && this.windowScroll > 0){
+                    this.fixedNav = false;
+                }
             }
 
-            if(!this.fixedNav && window.scrollY > 300) {
+            if(!this.fixedNav && window.scrollY > 100) {
                 this.navAction = false;
             };
-
-
-
             return this;
         },
 

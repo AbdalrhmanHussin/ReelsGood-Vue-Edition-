@@ -19,7 +19,7 @@
 import axios from 'axios';
 import swSkeleton from '../skeletons/sw-skeleton.vue'
 import swBox from '../Boxes/sw-box.vue';
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default ({
     props: {
@@ -34,7 +34,7 @@ export default ({
             }
         },
         'sort': {
-
+            default: 'popular'
         }
     },
     data() {
@@ -91,18 +91,21 @@ export default ({
     },
 
     methods: {
-        getShows() 
-        {
-            /** get the decalred show */
-            axios.post(`show/${this.type}/1/${this.sortBy}`).then((res) => {
-                this.shows = res.data.results;
-                this.skeleton = false
-            })
-        }
+        ...mapActions([
+            'getShows'
+        ])
     }, 
 
     mounted() {
-        this.getShows();
+        this.getShows({
+            type: this.type,
+            sort: this.sort,
+            page: 1
+        }).then((res) => {
+            this.skeleton = false;
+            console.log(res);
+            this.shows = res.results;
+        });
     }
 })
 </script>

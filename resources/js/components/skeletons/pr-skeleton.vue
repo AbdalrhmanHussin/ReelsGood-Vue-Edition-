@@ -46,7 +46,7 @@ export default ({
             } else if(580 < this.windowWidth && this.windowWidth < 700)  {
                 this.skeletonBox = 3
             } else {
-                this.skeletonBox = 2
+                this.skeletonBox = 1
             }
            
         },

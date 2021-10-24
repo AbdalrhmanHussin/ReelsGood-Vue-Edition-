@@ -1,5 +1,10 @@
 /* navbar */
 
+nav,
+.nav-clone {
+    height: 57px;
+}
+
 nav.scrolled {
     z-index: 100;
     background: var(--old-green);
