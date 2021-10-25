@@ -22916,7 +22916,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       console.log(_this.show);
       _this.provider = _this.show['watch/providers'].results.US !== undefined ? _this.show['watch/providers'].results.US.flatrate : '';
       _this.buy = _this.show['watch/providers'].results.US !== undefined ? _this.show['watch/providers'].results.US.buy : '';
-      _this.$store.state.load = true;
+      _this.$store.state.load = false;
     });
   }
 });

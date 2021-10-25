@@ -165,7 +165,7 @@ export default ({
             console.log(this.show);
             this.provider = (this.show['watch/providers'].results.US !== undefined) ? this.show['watch/providers'].results.US.flatrate : '';
             this.buy      = (this.show['watch/providers'].results.US !== undefined) ? this.show['watch/providers'].results.US.buy : '';
-            this.$store.state.load = true;
+            this.$store.state.load = false;
         });
     }
 })
