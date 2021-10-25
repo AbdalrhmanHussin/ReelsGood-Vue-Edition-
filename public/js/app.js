@@ -24189,7 +24189,7 @@ var _hoisted_1 = {
 };
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: "/images/system/load.gif",
+  src: "https://drive.google.com/uc?export=view&id=1ziesp7IcU46bI9ujD6nJu3__DboZxAXt",
   alt: "load"
 }, null, -1
 /* HOISTED */
