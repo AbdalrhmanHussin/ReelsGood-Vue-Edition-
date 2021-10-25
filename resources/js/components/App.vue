@@ -1,11 +1,11 @@
 <template>
     <div class="main-container">
-        <router-view></router-view>
+        <router-view :key="$route.path"></router-view>
     </div>
 </template>
 
 <script>
-
+ import load from './Pages/load.vue'
  export default {
     mounted() {
       //  [App.vue specific] When App.vue is finish loading finish the progress bar

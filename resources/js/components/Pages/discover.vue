@@ -10,11 +10,11 @@
         <!-- Content -->
         <div class="p-content rg-container">
            <section class="mt-4 sec">
-                <h3 class="sec-title">Popular Movies</h3>
+                <h3 class="sec-title fs-12 fw-600">Popular Movies</h3>
                 <sw-sql type="movie"></sw-sql>
            </section>
            <section class="mt-4 sec">
-                <h3 class="sec-title">Top Tv Shows</h3>
+                <h3 class="sec-title fs-12 fw-600">Top Tv Shows</h3>
                 <sw-sql type="tv" sort="top_rated"></sw-sql>
            </section>
         </div>
@@ -28,14 +28,14 @@
         <!-- Content -->
         <div class="p-content rg-container">
             <section class="mt-4 sec">
-                <h3 class="sec-title">Popular Actors</h3>
+                <h3 class="sec-title fs-12 fw-600">Popular Actors</h3>
                 <pr-sql type="person"></pr-sql>
            </section>
         </div>
 
         <div class="p-content rg-container">
             <section class="mt-4 sec">
-                <h3 class="sec-title">Top Rated Movies</h3>
+                <h3 class="sec-title fs-12 fw-600">Top Rated Movies</h3>
                 <med-sql type="movie" sort="now_playing"></med-sql>
            </section>
         </div>

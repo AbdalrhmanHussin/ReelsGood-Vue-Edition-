@@ -72,7 +72,6 @@ class ShowController extends Controller
     {
         $shows = $this->show
                       ->provider($provider)
-                      ->type('tv')
                       ->page($page)
                       ->getByCategory($cat);
         return $shows;

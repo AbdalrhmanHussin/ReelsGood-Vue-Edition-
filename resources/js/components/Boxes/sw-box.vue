@@ -10,9 +10,9 @@
                         <p class="fs-12 fw-600 mb-0" v-if="show['title']">{{ show['title'] }}</p>
                         <p class="fs-12 fw-600 mb-0" v-if="show['name']">{{ show['name'] }}</p>
                         <ul class="genre p-0 nav">
-                            <li v-for="(gen,index) in show['genre_ids']" :key="index" class="fs-10 color-sv pr-1 mb-0 fit-it d-inline-block">
+                            <li v-for="(gen,index) in show['genre_ids']" :key="index" class="fs-10 color-sv  mb-0 fit-it d-inline-block">
                                 <span v-if="genre[type] && genre[type][gen]">{{ genre[type][gen] }}</span>
-                                <span class="p-1" v-if="index !== show['genre_ids'].length - 1">,</span>
+                                <span class="pr-1 pl-0"></span>
                             </li>
                         </ul>
                         <span class="fs-10 color-sv pr-1 mb-0 fit-it d-inline-block" v-if="show['genre_ids'].length == 0">No Genre</span>
@@ -58,6 +58,9 @@ export default {
         ...mapGetters([
             'genre'
         ]),
+    },
+    mounted() {
+       
     }
 }
 </script>

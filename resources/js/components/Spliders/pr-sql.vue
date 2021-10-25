@@ -41,6 +41,9 @@ export default ({
         },
         'sort': {
             default: 'popular'
+        },
+        'provided': {
+            default: []
         }
     },
     data() {
@@ -93,15 +96,20 @@ export default ({
     }, 
 
      mounted() {
-        this.getShows({
-            type: this.type,
-            sort: 'popular',
-            page: 1
-        }).then((res) => {
-            console.log(res);
+        if(this.provided.length == 0)
+        {
+            this.getShows({
+                type: this.type,
+                sort: 'popular',
+                page: 1
+            }).then((res) => {
+                this.skeleton = false;
+                this.shows = res;
+            });
+        } else {
+            this.shows = this.provided;
             this.skeleton = false;
-            this.shows = res;
-        });
+        }
     }
 })
 </script>

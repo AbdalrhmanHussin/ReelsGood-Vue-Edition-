@@ -30,7 +30,7 @@
     "dependencies": {
         "@aacassandra/vue3-progressbar": "^1.0.3",
         "@splidejs/vue-splide": "^0.5.2",
-        "holtdataformate": "^1.0.0",
+        "holtdataformater": "^1.0.2",
         "vue-router": "^4.0.12",
         "vuex": "^4.0.2"
     }

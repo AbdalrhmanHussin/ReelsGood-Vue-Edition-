@@ -18,15 +18,15 @@ use Illuminate\Support\Facades\Route;
 /** =================== Genre Routes ==================== */
 
 Route::group(['prefix' => 'genre'],function(){
-    Route::get('/',[ShowController::class,'genre_ids']);
-    Route::get('/{type}',[ShowController::class,'genre_id']);
+    Route::post('/',[ShowController::class,'genre_ids']);
+    Route::post('/{type}',[ShowController::class,'genre_id']);
 });
 
 /** ======================= Shows Routes ================== */
 
 Route::group(['prefix' => 'show'],function(){
     Route::post('/find/{type}/{id}',[ShowController::class,'find']);
-    Route::post('/category/{id}/{type}/{page?}',[ShowController::class,'getByCategory']);
+    Route::post('/category/{id}/{page?}',[ShowController::class,'getByCategory']);
     Route::post('/search/{type}/{search}/{limit?}',[ShowController::class,'search']);
     Route::post('/{type}/{page?}/{sort?}',[ShowController::class,'get']);
 });

@@ -144,11 +144,11 @@ export default ({
         scrollNav()
         {
             let oldScroll = this.window.scrollY;
-            if(oldScroll < this.windowScroll && this.window.scrollY > 0)
+            if(oldScroll < this.windowScroll)
             {
                 this.navAction = true;
                 this.fixedNav  = true
-            } else if (oldScroll > this.windowScroll && this.windowScroll > 0) {
+            } else if (oldScroll > this.windowScroll) {
                 if(this.fixedNav && this.windowScroll > 0){
                     this.fixedNav = false;
                 }
@@ -172,7 +172,7 @@ export default ({
         window.addEventListener('resize', this.resizeHandler);
         window.addEventListener('scroll',() => {
             this.scrollNav().scrollSet(); 
-        })
+        });
     }
  })
 </script>

@@ -5,6 +5,8 @@ import plugin from './collectors.js';
 import VueSplide from '@splidejs/vue-splide';
 import '@splidejs/splide/dist/css/themes/splide-skyblue.min.css';
 import VueProgressBar from "@aacassandra/vue3-progressbar";
+import HoltDateFormater from 'holtdataformater';
+
 
 
 const options = {
@@ -27,6 +29,13 @@ const options = {
 import AppComponent from './components/App.vue'
 
 import {mapActions} from 'vuex';
+
+let holtOptions = {
+    shortTrack: true,
+    longTrack: false,
+    percies: false,
+    formate: true
+}
 
 let app = createApp({
     components: {
@@ -60,4 +69,5 @@ app.use(router)
    .use(store)
    .use(VueSplide)
    .use(VueProgressBar, options)
+   .use(HoltDateFormater,holtOptions)
    .mount("#app")

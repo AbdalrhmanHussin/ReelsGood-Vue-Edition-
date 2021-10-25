@@ -7,7 +7,8 @@ import { createStore } from 'vuex'
 const store = createStore({
     state: {
         genres: [],
-        shows: []
+        shows: [],
+        load: false
     },
 
     getters: {
@@ -27,7 +28,7 @@ const store = createStore({
 
         genres({state,commit})
         {
-            axios.get('genre').then((res) => {
+            axios.post('/genre').then((res) => {
                 commit('genre',res.data);
             })
         },
@@ -41,7 +42,7 @@ const store = createStore({
         {
             console.log(payload);
             return new Promise((resolve,reject) => {                
-                axios.post(`show/${payload.type}/${payload.page}/${payload.sort}`).then((res) => {
+                axios.post(`/show/${payload.type}/${payload.page}/${payload.sort}`).then((res) => {
                     resolve(res.data)
                 })
             }).catch((err) => {
@@ -57,13 +58,26 @@ const store = createStore({
         getShow({},payload)
         {
             return new Promise((resolve,reject)=>{
-                axios.post(`/show/find/${payload.type}/${payload.id}`,{provider: ['credits','videos']}).then((res) => {
+                axios.post(`/show/find/${payload.type}/${payload.id}`,{provider: ['credits','videos','watch/providers','similar']}).then((res) => {
                     resolve(res.data);
                 }).catch((error) => {
                     console.error(error);
                 })
             }).catch((err) => {
                 throw err
+            })
+        },
+
+        getShowsCat({},payload)
+        {
+            return new Promise((resolve,reject) => {
+                axios.post(`/show/category/${payload.id}`).then((res) => {
+                    resolve(res.data)
+                }).catch((error) => {
+                    console.error(error);
+                })
+            }).catch((err) => {
+                console.error(error);
             })
         }
     }

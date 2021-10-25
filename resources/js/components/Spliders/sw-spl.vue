@@ -33,6 +33,15 @@ export default ({
               }
             }
         },
+        'provided': {
+            default: []
+        },
+        'genre': {
+            default: false
+        },
+        'genre_id': {
+            
+        },
         'sort': {
             default: 'popular'
         }
@@ -92,20 +101,33 @@ export default ({
 
     methods: {
         ...mapActions([
-            'getShows'
+            'getShows',
+            'getShowsCat'
         ])
     }, 
 
     mounted() {
-        this.getShows({
-            type: this.type,
-            sort: this.sort,
-            page: 1
-        }).then((res) => {
-            console.log(res);
+        if(this.provided.length == 0 && !this.genre){
+            this.getShows({
+                type: this.type,
+                sort: this.sort,
+                page: 1
+            }).then((res) => {
+                this.skeleton = false;
+                this.shows = res.results;
+            });
+        } else if(this.genre) {
+            this.getShowsCat({
+                type: this.type,
+                id: this.genre_id
+            }).then((res) => {
+                this.shows = res.results;
+                this.skeleton = false;
+            });
+        } else {
+            this.shows = this.provided.results;
             this.skeleton = false;
-            this.shows = res.results;
-        });
+        }   
     }
 })
 </script>

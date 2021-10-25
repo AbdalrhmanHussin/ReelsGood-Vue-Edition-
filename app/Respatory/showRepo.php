@@ -88,7 +88,7 @@ class showRepo implements showRepoInterface {
         if(in_array($this->type,$this->typeArr))
         {
 
-            $request = $this->base_url.$this->type.'/'.$id . $this->key().'&append_to_response='.$this->provider.'&with_watch_providers';
+            $request = $this->base_url.$this->type.'/'.$id . $this->key().'&append_to_response='.$this->provider;
 
             $request = Http::get($request)->json();
 
@@ -96,7 +96,7 @@ class showRepo implements showRepoInterface {
             {
                 $cast = (isset($request['credits']['cast'])) ? $request['credits']['cast'] : [];
                 $crew =  (isset($request['credits']['crew'])) ? $request['credits']['crew'] : [];
-                $collection = static::collected('merge',[$cast,$crew]);
+                $collection = static::collected('merge',[$cast,$crew])->chunk(2)->toArray();
                 $request['credits']['cast'] = $collection;
                 $request['credits']['crew'] = [];
             }

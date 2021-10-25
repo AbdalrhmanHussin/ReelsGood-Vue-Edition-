@@ -1,64 +1,173 @@
 <template>
-    <div class="">
+    <div class="" v-if="show.hasOwnProperty('adult')">
         <header
             :style="{'background': linearImage , 'background-size': 'cover' }"
             class="w-100 position-relative">
             <div class="container d-flex pt-5  h-100">
-                <img :src="'https://image.tmdb.org/t/p/w500/' + show.poster_path" class="poster">
+                <img :src="'https://image.tmdb.org/t/p/w500/' + show.poster_path" class="poster" v-if="show.poster_path">
+                <img src="/images/system/noimg.jfif" class="poster" v-if="!show.poster_path">
                 <div class="display-info pl-5 ml-2">
                     <h3 v-if="show.name" class="h3 fw-bold text-white mb-3">{{ show.name }}</h3>
                     <h3 v-if="show.title" class="h3 fw-bold text-white mb-3">{{ show.title }}</h3>
                     <div class="toggler mb-3 action-container">
-                        <button class="silver-btn  action actionbtn fs-13 fw-600">Watch Later</button>                        
-                        <button class="silver-btn action actionbtn fs-13" v-if="type == 'tv'">Seen All</button>
-                        <button class="silver-btn action actionbtn fs-13" v-if="type == 'tv'">Track</button>
-                        <button class="silver-btn action actionbtn fs-13" v-if="type == 'movie'">Love</button>
-                        <button class="silver-btn action actionbtn fs-13" v-if="type == 'movie'">Watched</button>
+                        <button class="silver-btn  action actionbtn fs-13">
+                        <i class="ri-add-line fw-bold"></i>
+                        Watch Later
+                        </button>                        
+                        <button class="silver-btn action actionbtn fs-13" v-if="type == 'tv'">
+                        <i class="ri-check-line fw-bold"></i>
+                        Seen All
+                        </button>
+                        <button class="silver-btn action actionbtn fs-13" v-if="type == 'tv'">
+                        <i class="ri-send-plane-line"></i>
+                        Track
+                        </button>
+                        <button class="silver-btn action actionbtn fs-13" v-if="type == 'movie'">
+                        <i class="ri-heart-add-fill fw-bold"></i>    
+                        Love
+                        </button>
+                        <button class="silver-btn action actionbtn fs-13" v-if="type == 'movie'">
+                        <i class="ri-check-line fw-bold"></i>
+                        Watched
+                        </button>
                     </div>
+                    <p class="mb-3">
+                        <span class="star fs-14 text-white pr-2" v-if="show.vote_average">
+                            <span class="pr-1 fs-12 fw-600">Tmdb Votes:</span>
+                            <span class="fs-14 text-whity">{{show.vote_average}}/10</span>
+                        </span>
+                        <span class="star fs-14 text-white pr-2" v-if="show.popularity">
+                            <span class="pr-1 fs-12 fw-600">Popularity:</span>
+                            <span class="fs-14 text-whity">{{show.popularity}}</span>
+                        </span>
+                        <span class="star fs-14 text-white pr-2" v-if="show.number_of_episodes">
+                            <span class="pr-1 fs-12 fw-600 fw-600">Episodes:</span>
+                            <span class="fs-12 text-whity" v-if="show.number_of_episodes">{{show.number_of_episodes}}</span>
+                        </span>
+                    </p>
+                    <p class="mb-3">
+                        <span class="star fs-14 text-white pr-2" v-if="show.number_of_seasons">
+                            <span class="pr-1">{{show.number_of_seasons}}</span>
+                            <span class="fs-12">Season</span>
+                        </span>
+                        <span class="star fs-14 text-white pr-2" v-if="show.first_air_date">
+                            <span class="pr-1 fs-12 fw-600" >First Episode:</span>
+                            <span class="fs-12 text-whity" v-HoltFormater:[formate]="show.first_air_date" v-if="show.first_air_date"></span>
+                        </span>
+                        <span class="star  text-white pr-2" v-if="show.last_air_date">
+                            <span class="pr-1 fs-12 fw-600" >Last Episode:</span>
+                            <span class="fs-12  text-whity" v-HoltFormater:[formate]="show.last_air_date"></span>
+                        </span>
+                    </p>
+                    <p class="mb-3 d-flex flex-wrap">
+                        <span class="fs-14 text-white pr-2">
+                            <span class="fs-12 fw-600">Categories: </span>
+                        </span>
+                        <router-link  v-for="(gen,index) in show.genres" :key="index" to="{/}">
+                            <span class="fs-12 text-whity">{{gen['name']}}</span>
+                            <span v-if="index < show.genres.length - 1" class="text-whity pr-1 pl-1">, </span>
+                        </router-link>
+                    </p>
+                    <p class="mb-3 d-flex flex-wrap" v-if="provider">
+                        <span class="fs-14 text-white pr-2">
+                            <span class="fs-12 fw-600">Available On: </span>
+                        </span>
+                        <span class="fs-12 text-whity" v-for="(store,index) in provider" :key="index">
+                            {{ store.provider_name }}
+                            <span v-if="index < provider.length - 1" class="text-whity pr-1 pl-1">, </span>
+                        </span>
+                    </p>
+                    <p class="mb-3 d-flex flex-wrap" v-if="buy">
+                        <span class="fs-14 text-white pr-2">
+                            <span class="fs-12 fw-600">Buy From: </span>
+                        </span>
+                        <span class="fs-12 text-whity pt-1" v-for="(store,index) in buy" :key="index">
+                            {{ store.provider_name }}
+                            <span v-if="index < buy.length - 1" class="text-whity pr-1 pl-1">, </span>
+                        </span>
+                    </p>
+                    <p class="fs-14 mb-0 text-whity mb-3">
+                        {{show.overview}}
+                    </p>
                 </div>
             </div>
             <div class="rg-container">
-                <!-- people -->
-                <section class="sec mt-5 position-relative">
-                  
+                <section class="mt-4 sec" v-if="show.credits">
+                    <h3 class="sec-title fs-12 fw-600" v-if="show.credits.cast">Crew Members</h3>
+                    <pr-sql type="movie" :provided="show.credits.cast" v-if="show.credits.cast"></pr-sql>
                 </section>
             </div>
         </header>
+        <div class="rg-container">
+            <!-- people -->
+            <section class="mt-4 sec" v-if="show.similar">
+                <h3 class="sec-title fs-12 fw-600">Similar {{type}}</h3>
+                <sw-sql :type="type" :provided="show.similar" ></sw-sql>
+           </section>
+            <section class="mt-4 sec"  v-for="(gen,index) in show.genres" :key="index">
+                <h3 class="sec-title fs-12 fw-600">More {{ gen['name'] }}</h3>
+                <sw-sql :type="type"  :genre="true" :genre_id="gen['id']"></sw-sql>
+           </section>
+        </div>
     </div>
 </template>
 
 <script>
 import { mapActions } from "vuex"
+import swSql from '../Spliders/sw-spl.vue'
+import prSql from '../Spliders/pr-sql.vue'
 
-    export default ({
-        props: ['id','type'],
-        data() {
-            return {
-                show: ''
-            }
-        },
 
-        methods: {
-            ...mapActions([
-                'getShow'
-            ])
-        },
-
-        computed: {
-            linearImage() {
-                return `linear-gradient(357deg,#0a1016,#0a1016db,#0a1016b8),url('https://image.tmdb.org/t/p/w1280/${this.show.backdrop_path}')`
-            }
-        },
-
-        mounted() {
-            this.getShow({
-                type: this.type,
-                id: this.id
-            }).then((res) => {
-                this.show = res;
-                console.log(this.show);
-            });
+export default ({
+    props: ['id','type'],
+    data() {
+        return {
+            show: [],
+            formate: 'dd  ww  yy',
+            provider: '',
+            buy: ''
         }
-    })
+    },
+
+    components: {
+        'sw-sql': swSql,
+        'pr-sql': prSql,
+    },
+
+    methods: {
+        ...mapActions([
+            'getShow'
+        ])
+    },
+
+    computed: {
+        linearImage() 
+        {
+            return `linear-gradient(357deg,#0a1016,#0a1016db,#0a1016b8),url('https://image.tmdb.org/t/p/w1280/${this.show.backdrop_path}')`
+        },
+        similar()
+        {
+            let arr = [];
+            // this.show.similar_movies.push(arr);
+            arr.push()
+            return [this.show.similar_movies];
+        }
+    },
+
+    mounted() {
+        this.$store.state.load = true;
+       
+        this.getShow({
+            type: this.type,
+            id: this.id
+        }).then((res) => {
+            this.show     = res;
+            console.log(this.show);
+            this.provider = (this.show['watch/providers'].results.US !== undefined) ? this.show['watch/providers'].results.US.flatrate : '';
+            this.buy      = (this.show['watch/providers'].results.US !== undefined) ? this.show['watch/providers'].results.US.buy : '';
+            this.$store.state.load = false;
+        });
+    }
+})
 
 </script>
