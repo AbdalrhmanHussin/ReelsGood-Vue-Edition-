@@ -22859,8 +22859,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['id']
+  props: ['id', 'type'],
+  data: function data() {
+    return {
+      show: ''
+    };
+  },
+  methods: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)(['getShow'])),
+  computed: {
+    linearImage: function linearImage() {
+      return "linear-gradient(357deg,#0a1016,#0a1016db,#0a1016b8),url('https://image.tmdb.org/t/p/w1280/".concat(this.show.backdrop_path, "')");
+    }
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    this.getShow({
+      type: this.type,
+      id: this.id
+    }).then(function (res) {
+      _this.show = res;
+      console.log(_this.show);
+    });
+  }
 });
 
 /***/ }),
@@ -23094,7 +23124,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     'type': {
-      'required': true,
+      'required': false,
       validator: function validator(value) {
         var arr = ['person', 'movie', 'tv'];
         var check = arr.find(function (x) {
@@ -23166,8 +23196,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       sort: this.sort,
       page: 1
     }).then(function (res) {
-      _this.skeleton = false;
       console.log(res);
+      _this.skeleton = false;
       _this.shows = res.results;
     });
   }
@@ -23500,7 +23530,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     to: {
       name: 'show',
       params: {
-        id: 1
+        id: $props.show.id,
+        type: $props.type
       }
     },
     "class": "w-100 h-100 position-absolute top-0 left-0 zIndex2 dir-link"
@@ -23524,7 +23555,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Action Btns "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [$props.type == 'tv' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, _hoisted_17)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $props.type == 'movie' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_18, _hoisted_21)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $props.type == 'movie' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_22, _hoisted_25)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])])]);
+  }, 8
+  /* PROPS */
+  , ["to"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Action Btns "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [$props.type == 'tv' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, _hoisted_17)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $props.type == 'movie' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_18, _hoisted_21)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $props.type == 'movie' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_22, _hoisted_25)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])])]);
 }
 
 /***/ }),
@@ -24090,10 +24123,75 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = {
   "class": ""
 };
+var _hoisted_2 = {
+  "class": "container d-flex pt-5 h-100"
+};
+var _hoisted_3 = ["src"];
+var _hoisted_4 = {
+  "class": "display-info pl-5 ml-2"
+};
+var _hoisted_5 = {
+  key: 0,
+  "class": "h3 fw-bold text-white mb-3"
+};
+var _hoisted_6 = {
+  key: 1,
+  "class": "h3 fw-bold text-white mb-3"
+};
+var _hoisted_7 = {
+  "class": "toggler mb-3 action-container"
+};
+
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  "class": "silver-btn action actionbtn fs-13 fw-600"
+}, "Watch Later", -1
+/* HOISTED */
+);
+
+var _hoisted_9 = {
+  key: 0,
+  "class": "silver-btn action actionbtn fs-13"
+};
+var _hoisted_10 = {
+  key: 1,
+  "class": "silver-btn action actionbtn fs-13"
+};
+var _hoisted_11 = {
+  key: 2,
+  "class": "silver-btn action actionbtn fs-13"
+};
+var _hoisted_12 = {
+  key: 3,
+  "class": "silver-btn action actionbtn fs-13"
+};
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "rg-container"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" people "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", {
+  "class": "sec mt-5 position-relative"
+})], -1
+/* HOISTED */
+);
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, " Movie " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.id), 1
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", {
+    style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeStyle)({
+      'background': $options.linearImage,
+      'background-size': 'cover'
+    }),
+    "class": "w-100 position-relative"
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    src: 'https://image.tmdb.org/t/p/w500/' + $data.show.poster_path,
+    "class": "poster"
+  }, null, 8
+  /* PROPS */
+  , _hoisted_3), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [$data.show.name ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("h3", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.show.name), 1
   /* TEXT */
-  );
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.show.title ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("h3", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.show.title), 1
+  /* TEXT */
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_hoisted_8, $props.type == 'tv' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", _hoisted_9, "Seen All")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $props.type == 'tv' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", _hoisted_10, "Track")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $props.type == 'movie' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", _hoisted_11, "Love")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $props.type == 'movie' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", _hoisted_12, "Watched")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])]), _hoisted_13], 4
+  /* STYLE */
+  )]);
 }
 
 /***/ }),
@@ -24638,7 +24736,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_4__.createRouter({
         component: _components_Pages_discover_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
         name: 'discover'
       }, {
-        path: 'show/:id',
+        path: '/:type/:id',
         component: _components_Pages_show_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
         name: 'show',
         props: true
@@ -24691,6 +24789,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
+
 
 
  // Create a new store instance.
@@ -24711,10 +24811,6 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_2__.createStore)({
     }
   },
   actions: {
-    /**
-     * 
-     * @param {*} param0 
-     */
     genres: function genres(_ref) {
       var state = _ref.state,
           commit = _ref.commit;
@@ -24728,11 +24824,32 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_2__.createStore)({
      * @return { promise } 
      */
     getShows: function getShows(_ref2, payload) {
-      var state = _ref2.state,
-          commit = _ref2.commit;
+      _objectDestructuringEmpty(_ref2);
+
+      console.log(payload);
       return new Promise(function (resolve, reject) {
         axios__WEBPACK_IMPORTED_MODULE_0___default().post("show/".concat(payload.type, "/").concat(payload.page, "/").concat(payload.sort)).then(function (res) {
           resolve(res.data);
+        });
+      })["catch"](function (err) {
+        throw err;
+      });
+    },
+
+    /**
+     * @param {payload.type,payload.id}
+     * @return {promise}
+     */
+    getShow: function getShow(_ref3, payload) {
+      _objectDestructuringEmpty(_ref3);
+
+      return new Promise(function (resolve, reject) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default().post("/show/find/".concat(payload.type, "/").concat(payload.id), {
+          provider: ['credits', 'videos']
+        }).then(function (res) {
+          resolve(res.data);
+        })["catch"](function (error) {
+          console.error(error);
         });
       })["catch"](function (err) {
         throw err;

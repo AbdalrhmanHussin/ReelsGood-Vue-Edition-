@@ -24,11 +24,7 @@ const store = createStore({
     },
 
     actions: {
-        
-        /**
-         * 
-         * @param {*} param0 
-         */
+
         genres({state,commit})
         {
             axios.get('genre').then((res) => {
@@ -41,14 +37,33 @@ const store = createStore({
          * @return { promise } 
          */
 
-        getShows({state,commit},payload)
+        getShows({},payload)
         {
+            console.log(payload);
             return new Promise((resolve,reject) => {                
                 axios.post(`show/${payload.type}/${payload.page}/${payload.sort}`).then((res) => {
                     resolve(res.data)
                 })
             }).catch((err) => {
                  throw err;
+            })
+        },
+
+        /**
+         * @param {payload.type,payload.id}
+         * @return {promise}
+         */
+
+        getShow({},payload)
+        {
+            return new Promise((resolve,reject)=>{
+                axios.post(`/show/find/${payload.type}/${payload.id}`,{provider: ['credits','videos']}).then((res) => {
+                    resolve(res.data);
+                }).catch((error) => {
+                    console.error(error);
+                })
+            }).catch((err) => {
+                throw err
             })
         }
     }

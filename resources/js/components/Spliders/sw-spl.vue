@@ -24,7 +24,7 @@ import { mapActions, mapGetters } from 'vuex'
 export default ({
     props: {
         'type': {
-            'required': true,
+            'required': false,
             validator(value) {
               let arr = ['person','movie','tv'];
               let check = arr.find((x) => {return x == value })   
@@ -102,8 +102,8 @@ export default ({
             sort: this.sort,
             page: 1
         }).then((res) => {
-            this.skeleton = false;
             console.log(res);
+            this.skeleton = false;
             this.shows = res.results;
         });
     }

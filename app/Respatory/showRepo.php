@@ -46,7 +46,7 @@ class showRepo implements showRepoInterface {
      *  @return instacne 
     */
 
-    public function provider(array|string $provider = [])
+    public function provider($provider = [])
     {
         if(gettype($provider) == 'array')
         {
@@ -89,7 +89,19 @@ class showRepo implements showRepoInterface {
         {
 
             $request = $this->base_url.$this->type.'/'.$id . $this->key().'&append_to_response='.$this->provider.'&with_watch_providers';
-            return Http::get($request)->json();
+
+            $request = Http::get($request)->json();
+
+            if(str_contains($this->provider,'credits'))
+            {
+                $cast = (isset($request['credits']['cast'])) ? $request['credits']['cast'] : [];
+                $crew =  (isset($request['credits']['crew'])) ? $request['credits']['crew'] : [];
+                $collection = static::collected('merge',[$cast,$crew]);
+                $request['credits']['cast'] = $collection;
+                $request['credits']['crew'] = [];
+            }
+
+            return $request;
 
         } else throw new Exception('The type of request must be set to tv | movie, the given type is either set to null or undefined');
     }

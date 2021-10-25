@@ -5,7 +5,7 @@
 
             <!-- Box information -->
             <div class="position-absolute top-0 w-100 h-100 top-0 p-2 d-flex justify-content-between align-items-start sw-box-layer">
-                <router-link :to="{name:'show', params: {id:1}}" class="w-100 h-100 position-absolute top-0 left-0 zIndex2 dir-link">
+                <router-link :to="{name:'show', params: {id:show.id,type:type}}" class="w-100 h-100 position-absolute top-0 left-0 zIndex2 dir-link">
                     <div class="position-absolute h-100 d-flex justify-content-end flex-column p-2 fs-12 color-wh">
                         <p class="fs-12 fw-600 mb-0" v-if="show['title']">{{ show['title'] }}</p>
                         <p class="fs-12 fw-600 mb-0" v-if="show['name']">{{ show['name'] }}</p>

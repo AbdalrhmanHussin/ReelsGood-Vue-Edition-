@@ -14,7 +14,7 @@ const router = new createRouter({
         {path:'',component:App,children:[
             {path:'',component:AppLayout,children:[
                 {path: '',component:discover,name:'discover'},
-                {path: 'show/:id',component:show,name:'show',props:true}
+                {path: '/:type/:id',component:show,name:'show',props:true}
             ]}
         ], meta: {
             progress: {
