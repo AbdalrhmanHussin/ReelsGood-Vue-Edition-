@@ -58,7 +58,7 @@ const store = createStore({
         getShow({},payload)
         {
             return new Promise((resolve,reject)=>{
-                axios.post(`/show/find/${payload.type}/${payload.id}`,{provider: ['credits','videos','watch/providers','similar']}).then((res) => {
+                axios.post(`/show/find/${payload.type}/${payload.id}`,{provider: ['credits','videos','watch/providers','recommendations']}).then((res) => {
                     resolve(res.data);
                 }).catch((error) => {
                     console.error(error);
@@ -68,18 +68,63 @@ const store = createStore({
             })
         },
 
+         /**
+         * @param {payload.id}
+         * @return {promise}
+         */
+
         getShowsCat({},payload)
         {
+            console.log(payload);
+
             return new Promise((resolve,reject) => {
-                axios.post(`/show/category/${payload.id}`).then((res) => {
+                axios.post(`/show/category/${payload.type}/1/${payload.id}`).then((res) => {
+                    console.log(res);
                     resolve(res.data)
                 }).catch((error) => {
                     console.error(error);
                 })
             }).catch((err) => {
-                console.error(error);
+                console.error(err);
+            })
+        },
+
+         /**
+         * @param {payload.id}
+         * @return {promise}
+         */
+        person({},payload)
+        {
+            return new Promise((resolve,reject) => {
+                axios.post(`/show/person/${payload.id}`).then((res) => {
+                    resolve(res.data);
+                }).catch((error) => {
+                    console.error(error);
+                })
+            }).catch((err) => {
+                console.error(err);
+            })
+        },
+
+          /**
+         * @param {payload.id}
+         * @return {promise}
+         */
+        getLoadCategory({},payload)
+        {
+            console.log('asd');
+            return new Promise((resolve,reject)=> {
+                let url = (payload.id > 0) ? `/show/category/${payload.type}/${payload.page}/${payload.id}` : `/show/category/${payload.type}/${payload.page}`;
+                axios.post(`${url}`,{next:true}).then((res) => {
+                    resolve(res.data);
+                }).catch((error) => {
+                    console.error(error);
+                })
+            }).catch((error) => {
+                console.error(error)
             })
         }
+
     }
 });
 export default store;

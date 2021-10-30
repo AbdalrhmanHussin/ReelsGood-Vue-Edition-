@@ -13,4 +13,5 @@ interface showRepoInterface {
     public function genre_id($type); //get tv or movie genre seprated
     public function genre_ids(); //get tv and movie togther
     public static function collected($type,$arr = [],$limit = null); //laravel collection 
+    public function person($id); //get person by id
 }

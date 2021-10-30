@@ -20,6 +20,7 @@ class showRepo implements showRepoInterface {
     protected $provider;
     protected $page = 1;
     protected $get;
+    protected $next = false;
 
     public function key()
     {
@@ -76,6 +77,31 @@ class showRepo implements showRepoInterface {
         return $this;
     }
 
+    public function next($next)
+    {
+        $this->next = $next;
+        return $this;
+    }
+
+     /**
+     * get a person by id
+     * @param id => person id
+     * @return array 
+    */
+
+    public function person($id) 
+    {
+       $request = "https://api.themoviedb.org/3/person/$id".$this->key()."&language=en-US&append_to_response=combined_credits"  ;
+       $request = Http::get($request)->json();
+       ##Combined
+       $cast = (isset($request['combined_credits']['cast'])) ? $request['combined_credits']['cast'] : [];
+       $crew =  (isset($request['combined_credits']['crew'])) ? $request['combined_credits']['crew'] : [];
+       $collection = static::collected('merge',[$cast,$crew])->toArray();
+       $request['combined_credits']['cast'] = $collection;
+       $request['combined_credits']['crew'] = [];
+       return $request;
+    }
+
 
     /**
      * get a show by id
@@ -122,6 +148,14 @@ class showRepo implements showRepoInterface {
 
             $request = Http::get($request)->json();
 
+            if($this->next)
+            {
+                $nextRequest = $this->base_url.  $get . $this->key().'&page='.$this->page + 1;
+                $nextRequest =   Http::get($nextRequest)->json();
+                
+                $request = $this->collected('merge',[$request['results'],$nextRequest['results']]);
+            }
+
             return $request;
 
         } else throw new Exception('The type of request must be set to tv | movie, the given type is either set to null or undefined');
@@ -143,10 +177,17 @@ class showRepo implements showRepoInterface {
         $provider = $this->provider;
 
         $request = $this->base_url.'discover/'.$type.$key.'&append_to_response='.$provider ."&with_genres=$id".'&page='.$this->page;
-            
-        $collection = Http::get($request)->json();
 
-        return $collection;
+        $request = Http::get($request)->json();
+
+        if($this->next)
+        {
+            $nextRequest = $this->base_url.'discover/'.$type.$key.'&append_to_response='.$provider ."&with_genres=$id".'&page='.$this->page + 1;
+            $nextRequest =   Http::get($nextRequest)->json();
+            $request = $this->collected('merge',[$request['results'],$nextRequest['results']]);
+        }
+        
+        return $request;
     }
 
     /**
@@ -154,6 +195,7 @@ class showRepo implements showRepoInterface {
      * @param type => tv|movie
      * @return collection
      */
+
     public function genre_id($type) {
 
         $key = $this->key();
@@ -201,7 +243,6 @@ class showRepo implements showRepoInterface {
     public function searchFor(string $get)
     {
         $this->get = $get;
-
         return $this;
     }
 

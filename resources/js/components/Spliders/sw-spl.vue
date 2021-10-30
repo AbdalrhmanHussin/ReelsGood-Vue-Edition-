@@ -5,13 +5,15 @@
             <sw-skeleton v-if="skeleton"></sw-skeleton>
         </transition>
         <!-- Data Slider -->
-       <transition name="list">
-        <Splide :options="options" v-if="!skeleton">
-            <SplideSlide v-for="(show,index) in shows" :key="index">
-                <sw-box :show="show" :type="type"></sw-box>
-            </SplideSlide>
-        </Splide>
-       </transition>
+        {{  }}
+        <h3 class="sec-title fs-12 fw-600" v-if="title && Object.keys(this.shows).length > 0">{{ title }}</h3>
+        <transition name="list">
+            <Splide :options="options" v-if="!skeleton">
+                <SplideSlide v-for="(show,index) in shows" :key="index">
+                    <sw-box :show="show"></sw-box>
+                </SplideSlide>
+            </Splide>
+        </transition>
    </div>
 </template>
 
@@ -44,6 +46,9 @@ export default ({
         },
         'sort': {
             default: 'popular'
+        },
+        'title': {
+
         }
     },
     data() {
@@ -107,6 +112,7 @@ export default ({
     }, 
 
     mounted() {
+        console.log('here');
         if(this.provided.length == 0 && !this.genre){
             this.getShows({
                 type: this.type,
@@ -122,6 +128,7 @@ export default ({
                 id: this.genre_id
             }).then((res) => {
                 this.shows = res.results;
+                console.log(this.shows)
                 this.skeleton = false;
             });
         } else {

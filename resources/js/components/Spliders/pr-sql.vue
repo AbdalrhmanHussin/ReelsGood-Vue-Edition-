@@ -9,12 +9,14 @@
             <Splide :options="options" v-if="!skeleton">
                 <SplideSlide v-for="(show,index) in shows" :key="index">
                     <div class="collection ml-2 mt-2" v-for="(collection,index) in show" :key="index">
-                        <div class="actor-circle mb-2 d-flex  align-items-center">
-                            <div class="letters d-flex justify-content-center align-items-center fs-12 color-wh" :style="{'background-color': this.collector.getRandColor()}">
-                                {{ collector.getFirstLetters(collection['name']) }}
+                        <router-link :to="{name:'person',params:{id: collection.id}}">
+                            <div class="actor-circle mb-2 d-flex  align-items-center">
+                                <div class="letters d-flex justify-content-center align-items-center fs-12 color-wh" :style="{'background-color': this.collector.getRandColor()}">
+                                    {{ collector.getFirstLetters(collection['name']) }}
+                                </div>
+                                <p class="mb-0 pl-2 fs-12">{{collection['name']}}</p>
                             </div>
-                            <p class="mb-0 pl-2 fs-12">{{collection['name']}}</p>
-                        </div>
+                        </router-link>
                     </div>
                 </SplideSlide>
             </Splide>

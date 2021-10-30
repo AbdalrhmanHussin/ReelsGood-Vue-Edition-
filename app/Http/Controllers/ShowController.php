@@ -47,19 +47,21 @@ class ShowController extends Controller
      * @return array => shows
     */
 
-    public function get(string $type,int $page = 1,$sort = 'popular')
+    public function get(Request $request,string $type,int $page = 1,$sort = 'popular')
     {
+        $next = (!empty($request->only('next'))) ? $request->only('next')['next'] : false;
         $shows = $this->show
                       ->type($type)
                       ->sortBy($sort)
                       ->page($page)
+                      ->next($next)
                       ->get();
         if($type == 'person') {
             $shows = $this->show->collected('chunk',$shows['results'],2);
         }
         return $shows;
     }
-
+    
     /**
      * Get show collection by category
      * @param cat
@@ -68,11 +70,14 @@ class ShowController extends Controller
      * @return array => shows
     */
 
-    public function getByCategory(int $cat,int $page = 1,array $provider = [])
+    public function getByCategory(Request $request,$type,int $page = 1,int|null $cat = null,array $provider = [])
     {
+        $next = (!empty($request->only('next'))) ? $request->only('next')['next'] : false;
         $shows = $this->show
                       ->provider($provider)
                       ->page($page)
+                      ->type($type)
+                      ->next($next)
                       ->getByCategory($cat);
         return $shows;
     }
@@ -120,6 +125,12 @@ class ShowController extends Controller
                     ->type('person')
                     ->get();
         return $ppl;
+    }
+
+    public function person($id)
+    {
+        $ppl = $this->show->person($id);
+        return $ppl;   
     }
 
 }

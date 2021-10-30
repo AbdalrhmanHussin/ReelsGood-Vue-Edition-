@@ -1,8 +1,8 @@
 <template>
     <div class="sw-box-md position-relative w-100 p-2">
         <div class="sw-card-container position-relative w-100">
-            <img :src="'http://image.tmdb.org/t/p/w500/'+show.poster_path" alt="show-img" class="w-100 h-100">
-
+            <img :src="'http://image.tmdb.org/t/p/w500/'+show.poster_path" alt="show-img" class="w-100 h-100" v-if="show.poster_path">
+            <img src="https://drive.google.com/uc?export=view&id=1kuB2sBVgWwdxm2CVsBdaLZiTp89LKjgq" class="w-100 h-100" v-else>
             <!-- Box information -->
             <div class="position-absolute top-0 w-100 h-100 top-0 p-2 d-flex justify-content-between align-items-start sw-box-layer">
                 <router-link :to="{name:'show', params: {id:show.id,type:type}}" class="w-100 h-100 position-absolute top-0 left-0 zIndex2 dir-link">
@@ -50,14 +50,14 @@ export default {
         'show': {
             'required': true
         },
-        'type': {
-            'required': true
-        }
     },
     computed: {
         ...mapGetters([
             'genre'
         ]),
+        type() {
+            return (this.show.name !== undefined) ? 'tv' : 'movie';
+        }
     },
     mounted() {
        

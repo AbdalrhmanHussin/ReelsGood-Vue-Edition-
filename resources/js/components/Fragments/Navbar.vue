@@ -4,10 +4,10 @@
     <transition name="navbar">
         <nav class="navbar navbar-expand-md navbar-light shadow-sm w-100 position-absolute top-0" :class="{'position-fixed top-0 scrolled': fixedNav}" v-if="navAction" ref="nav">
             <div class="rg-container d-flex">
-                <a class="navbar-brand d-flex" href="#">
+                <div class="navbar-brand d-flex" href="#">
                     <i class="ri-menu-2-line" @click="openNav =! openNav"></i>
                     <img src="/images/system/logo.svg" ult="Reelsgood">
-                </a>
+                </div>
                 <!-- Left Side Of Navbar -->
                 <transition name="list">
                     <ul class="navbar-nav mr-auto menu" v-if="openNav || windowWidth > 992">
@@ -18,7 +18,7 @@
                                     Tv Shows
                                     <!-- Drop Menu -->
                                     <div class="drop-genre position-absolute">
-                                        <ul class="drop-menu d-grid gridx3 navbar-nav">
+                                        <ul class="drop-menu d-grid gridx3 navbar-nav zIndex5">
                                             <li class="nav-item fs-12" v-for="(gen,index) in genre['tv']" :key="index">
                                                 {{ gen }}
                                             </li>
@@ -31,7 +31,7 @@
                                     Movies
                                     <!-- Drop Menu -->
                                     <div class="drop-genre position-absolute ">
-                                        <ul class="drop-menu d-grid gridx3 navbar-nav">
+                                        <ul class="drop-menu d-grid gridx3 navbar-nav zIndex5">
                                             <li class="nav-item fs-12" v-for="(gen,index) in genre['movie']" :key="index">
                                                 {{ gen }}</li>
                                         </ul>
@@ -79,7 +79,9 @@
                         <label class="position-absolute right-0 color-wh p-3 close" @click="search =! search">
                             <i class="ri-close-circle-line ml-auto fs-15  color-wh "></i>
                         </label>
-                        <input type="search" placeholder="Where To Stream Anything" class="search">
+                        <transition name="list">
+                            <input type="search" placeholder="Where To Stream Anything" class="search">
+                        </transition>
                         <div class="search-container p-2 position-absolute" :class="{'w-100': windowWidth < 922}"
                             v-if="searchArr.length > 0">
                             <div class="search-result mb-2">

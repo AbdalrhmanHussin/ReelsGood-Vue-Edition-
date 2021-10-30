@@ -1,5 +1,5 @@
 <template>
-    <div class="" v-if="show.hasOwnProperty('adult')">
+    <div class="" v-if="show.hasOwnProperty('name') || show.hasOwnProperty('title') ">
         <header
             :style="{'background': linearImage , 'background-size': 'cover' }"
             class="w-100 position-relative">
@@ -100,13 +100,16 @@
         </header>
         <div class="rg-container">
             <!-- people -->
-            <section class="mt-4 sec" v-if="show.similar">
-                <h3 class="sec-title fs-12 fw-600">Similar {{type}}</h3>
-                <sw-sql :type="type" :provided="show.similar" ></sw-sql>
+            <section class="mt-4 sec" v-if="show.recommendations.results.length > 0">
+                <h3 class="sec-title fs-12 fw-600">
+                    Recommend 
+                    <span v-if="type == 'movie'">Movies</span>
+                    <span v-else>Tv Shows</span>
+                </h3>
+                <sw-sql :type="type" :provided="show.recommendations" ></sw-sql>
            </section>
             <section class="mt-4 sec"  v-for="(gen,index) in show.genres" :key="index">
-                <h3 class="sec-title fs-12 fw-600">More {{ gen['name'] }}</h3>
-                <sw-sql :type="type"  :genre="true" :genre_id="gen['id']"></sw-sql>
+                <sw-sql :type="type"  :genre="true" :genre_id="gen['id']" :title="'More ' + gen['name'] "></sw-sql>
            </section>
         </div>
     </div>
@@ -137,7 +140,7 @@ export default ({
     methods: {
         ...mapActions([
             'getShow'
-        ])
+        ]),
     },
 
     computed: {
@@ -162,7 +165,6 @@ export default ({
             id: this.id
         }).then((res) => {
             this.show     = res;
-            console.log(this.show);
             this.provider = (this.show['watch/providers'].results.US !== undefined) ? this.show['watch/providers'].results.US.flatrate : '';
             this.buy      = (this.show['watch/providers'].results.US !== undefined) ? this.show['watch/providers'].results.US.buy : '';
             this.$store.state.load = false;

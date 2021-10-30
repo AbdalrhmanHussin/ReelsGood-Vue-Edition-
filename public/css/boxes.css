@@ -3,7 +3,11 @@
 .sw-box-skeleton,
 .sw-see {
     width: 165px;
-    height: 238px;
+}
+
+
+.sw-box-skeleton {
+    height: 258px;
 }
 
 .sw-box-rect {
@@ -17,7 +21,7 @@
     padding: 2px 9px;
     border-radius: 4px;
 }
-
+.sw-card-container:hover .sw-box-layer,
 .sw-box-md:hover .sw-box-layer {
     background-color: var(--shadow);
 }
@@ -32,6 +36,13 @@
     .sw-box-skeleton {
         width: 165px;
         height: 285px;
+    }
+}
+
+@media only screen and (max-width: 410px){
+    .sw-card-container,
+    .sw-box-skeleton {
+        width: 165px;
     }
 }
 
@@ -73,7 +84,7 @@
 .mini-holder {
     transition: all .3s linear;
 }
-
+.sw-card-container:hover .mini,
 .mini-container:hover .mini-holder {
     background-color: #0005;
 }
@@ -101,14 +112,30 @@
 
 
 /* large box*/
-.lgshowbox img {
-    border-radius: 4px 4px 0px 0px;
+.lgshowbox .poster{
+    height: 215px;
+}
+
+.lgshowbox .img-poster {
+    background-color: var(--bad-silver);
+    background-size: cover;
+    transition: all .3s linear;
 }
 
 .lgshowbox .lgshowinfo {
     height: 198px;
     border-radius: 0 0 4px 4px;
     background: #202020;
+    overflow: hidden;
+    transition: all .3s linear;
+}
+
+.lgshowbox:hover .lgshowinfo {
+    background: var(--dark);
+}
+
+.lgshowbox:hover .img-poster {
+    filter: brightness(0.5);
 }
 
 /* actors circle */
