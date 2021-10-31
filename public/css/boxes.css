@@ -130,6 +130,11 @@
     transition: all .3s linear;
 }
 
+.lgshowbox .lgshowinfo .lgshowboxcontainer {
+    height: 180px;
+    overflow: hidden;
+}
+
 .lgshowbox:hover .lgshowinfo {
     background: var(--dark);
 }

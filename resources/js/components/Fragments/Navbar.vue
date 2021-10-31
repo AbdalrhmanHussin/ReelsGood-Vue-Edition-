@@ -13,31 +13,36 @@
                     <ul class="navbar-nav mr-auto menu" v-if="openNav || windowWidth > 992">
                         <div :class="{'rg-container d-flex flex-column justify-content-start align-items-start': windowWidth < 992}"
                             class="d-flex">
-                            <a href="#">
+                            <router-link :to="{name:'display',params:{type:'tv'}}">
                                 <li class="menu-item position-relative">
                                     Tv Shows
                                     <!-- Drop Menu -->
                                     <div class="drop-genre position-absolute">
                                         <ul class="drop-menu d-grid gridx3 navbar-nav zIndex5">
-                                            <li class="nav-item fs-12" v-for="(gen,index) in genre['tv']" :key="index">
-                                                {{ gen }}
-                                            </li>
+                                           <router-link v-for="(gen,index) in genre['tv']" :key="index" :to="{name:'display',params:{type:'tv',id: index}}">
+                                                <li class="nav-item fs-12" >
+                                                    {{ gen }}
+                                                </li>
+                                           </router-link>
                                         </ul>
                                     </div>
                                 </li>
-                            </a>
-                            <a href="#">
+                            </router-link>
+                            <router-link :to="{name:'display',params:{type:'movie'}}">
                                 <li class="menu-item position-relative">
                                     Movies
                                     <!-- Drop Menu -->
                                     <div class="drop-genre position-absolute ">
                                         <ul class="drop-menu d-grid gridx3 navbar-nav zIndex5">
-                                            <li class="nav-item fs-12" v-for="(gen,index) in genre['movie']" :key="index">
-                                                {{ gen }}</li>
+                                            <router-link v-for="(gen,index) in genre['movie']" :key="index" :to="{name:'display',params:{type:'movie',id: index}}">
+                                                <li class="nav-item fs-12" >
+                                                    {{ gen }}
+                                                </li>
+                                           </router-link>
                                         </ul>
                                     </div>
                                 </li>
-                            </a>
+                            </router-link>
                             <a href="#">
                                 <li class="menu-item position-relative">
                                     Your List

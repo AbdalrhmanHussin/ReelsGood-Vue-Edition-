@@ -11,7 +11,7 @@
                     </div>
                     <transition name="list">
                         <ul class="navbar-nav p-1 zIndex3 selector-nav drop-nav zIndex4" v-if="openGenre">
-                            <router-link v-for="(gen,index) in genre[type]" :key="index" :to="{name:'display',params:{type:'movie',id:index}}" class="fs-13 text-white" >
+                            <router-link v-for="(gen,index) in genre[type]" :key="index" :to="{name:'display',params:{type:type,id:index}}" class="fs-13 text-white" >
                                 <li class="p-2">
                                     {{ gen }}
                                 </li>
@@ -28,16 +28,16 @@
                     </div>
                     <transition name="list">
                         <ul class="navbar-nav p-2 zIndex3 drop-nav zIndex4" v-if="openSort">
-                            <li class="selected p-2">
-                                <router-link :to="{name:'display',params:{type:'movie'}}" class="fs-12 fw-600 text-white">
+                            <router-link :to="{name:'display',params:{type:'movie'}}" class="fs-12 fw-600 text-white">
+                                <li class="selected p-2">
                                     Movies
-                                </router-link>
-                            </li>
-                            <li class=" p-2">
-                               <router-link :to="{name:'display',params:{type:'tv'}}" class="fs-12 fw-600 text-white">
-                                    Tv 
-                               </router-link>
-                            </li>
+                                </li>
+                            </router-link>
+                            <router-link :to="{name:'display',params:{type:'tv'}}" class="fs-12 fw-600 text-white">
+                                <li class=" p-2">
+                                    Tv
+                                </li>
+                            </router-link>
                         </ul>
                     </transition>
                 </div>
@@ -53,12 +53,17 @@
             </div>
             <div class="show-container action-container mb-3" v-if="!this.$store.state.load">
                 <div class="row sec mb-3">
-                    <div class="col-xl-3  col-md-6  col-lg-4 mt-3 position-relative" v-for="(show,index) in shows[0]" :key="index">
+                    <div class="col-xl-3  col-md-6  col-lg-4 mt-3 position-relative" v-for="(show,index) in shows" :key="index">
                         <lg-box :show="show"></lg-box>
                     </div>
                 </div>
-                <button class="m-auto d-block more d-flex align-items-center fs-12 " data-bind="/movie/" @click="getLoad()">
+                <button class="m-auto d-block more d-flex align-items-center fs-12 " data-bind="/movie/" @click="getLoad()" :class="{'active': loading}">
                     Load More
+                    <div class="loader d-flex ml-2" :class="{'loader-animation': loading}">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 </button>
             </div>
         </div>
@@ -81,7 +86,8 @@ export default {
            shows: [],
            window: window,
            page: 1,
-           sort: 'All'
+           sort: 'All',
+           loading: false
        } 
     },
 
@@ -123,15 +129,23 @@ export default {
             'getLoadCategory'
         ]),
         getLoad() {
+            this.loading = true;
             this.getLoadCategory({
                 id: this.id,
                 type: this.type,
                 page: this.page
             }).then((res) => {
-                this.shows.forEach((e) => {
+                res.forEach((e) => {
                     this.shows.push(e);
                 });
                 this.page = this.page + 2;
+                this.loading = false;
+                
+            }).then(()=>{
+                 window.scrollTo({
+                    top: window.scrollY +  window.screen.availHeight,
+                    behavior: 'smooth'
+                })
             });
 
         }
@@ -143,7 +157,8 @@ export default {
             type: this.type,
             page: this.page
         }).then((res) => {
-            this.shows.push(res);
+            this.shows = res;
+
             console.log(typeof this.shows);
             console.log(this.shows);
             this.$store.state.load = false;
