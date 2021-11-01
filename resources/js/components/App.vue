@@ -10,7 +10,9 @@
     mounted() {
       //  [App.vue specific] When App.vue is finish loading finish the progress bar
       this.$Progress.finish();
-     
+      document.addEventListener('click',function(){
+        alert('hello');
+      });
     },
     created() {
       //  [App.vue specific] When App.vue is first loaded start the progress bar

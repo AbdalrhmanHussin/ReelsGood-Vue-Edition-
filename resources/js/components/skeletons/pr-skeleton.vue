@@ -40,11 +40,11 @@ export default ({
             {
                 this.skeletonBox = 5
             } else if(1100 < this.windowWidth && this.windowWidth < 1400) {
-                this.skeletonBox = 5
-            } else if(700 < this.windowWidth && this.windowWidth < 1100) {
                 this.skeletonBox = 4
-            } else if(580 < this.windowWidth && this.windowWidth < 700)  {
+            } else if(700 < this.windowWidth && this.windowWidth < 1100) {
                 this.skeletonBox = 3
+            } else if(580 < this.windowWidth && this.windowWidth < 700)  {
+                this.skeletonBox = 2
             } else {
                 this.skeletonBox = 1
             }

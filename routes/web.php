@@ -27,7 +27,7 @@ Route::group(['prefix' => 'genre'],function(){
 Route::group(['prefix' => 'show'],function(){
     Route::post('/find/{type}/{id}',[ShowController::class,'find']);
     Route::post('/category/{type}/{page?}/{id?}',[ShowController::class,'getByCategory']);
-    Route::post('/search/{type}/{search}/{limit?}',[ShowController::class,'search']);
+    Route::get('/search/{type}/{search}/{limit?}',[ShowController::class,'search']);
     Route::post('/person/{id}',[ShowController::class,'person']);
     Route::post('/{type}/{page?}/{sort?}',[ShowController::class,'get']);
 });

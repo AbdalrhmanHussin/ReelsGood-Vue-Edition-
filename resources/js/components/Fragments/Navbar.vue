@@ -85,17 +85,14 @@
                             <i class="ri-close-circle-line ml-auto fs-15  color-wh "></i>
                         </label>
                         <transition name="list">
-                            <input type="search" placeholder="Where To Stream Anything" class="search">
+                            <input type="search" placeholder="Where To Stream Anything" class="search" v-model="searchKey" @keyup="searchIt()">
                         </transition>
-                        <div class="search-container p-2 position-absolute" :class="{'w-100': windowWidth < 922}"
-                            v-if="searchArr.length > 0">
-                            <div class="search-result mb-2">
-                                <h3 class="fs-13 color-wh mb-0">League of leagend </h3>
-                                <span class="d-flex fs-12 color-sv">Movie</span>
-                            </div>
-                            <div class="search-result mb-2">
-                                <h3 class="fs-13 color-wh mb-0">Tommorrow land</h3>
-                                <span class="d-flex fs-12 color-sv">Movie</span>
+                        <div class="search-container p-2 position-absolute zIndex5" :class="{'w-100': windowWidth < 922}"
+                            v-if="searchArr.length > 0 && searchKey.length > 0">
+                            <div class="search-result mb-2" v-for="(search,index) in searchArr" :key="index">
+                                <h3 class="fs-13 color-wh mb-0" v-if="search.name">{{ search.name }}</h3>
+                                <h3 class="fs-13 color-wh mb-0" v-if="search.title">{{ search.title }}</h3>
+                                <span class="d-flex fs-12 color-sv" v-if="search.media_type">{{ search.media_type }}</span>
                             </div>
                         </div>
                     </div>
@@ -125,7 +122,8 @@ export default ({
             windowScroll: 0,
             searchArr: [],
             fixedNav: false,
-            navAction: true
+            navAction: true,
+            searchKey: ''
         }
     },
     computed: {
@@ -141,7 +139,8 @@ export default ({
     },
     methods: {
         ...mapActions([
-            'genres'
+            'genres',
+            'searchGet'
         ]),
 
         resizeHandler() {
@@ -171,6 +170,17 @@ export default ({
         {
             this.navbar = true;
             this.windowScroll = this.window.scrollY;
+        },
+
+        searchIt()
+        {
+            if(this.searchKey.length > 0)
+            {
+                this.searchGet({searchKey: this.searchKey}).then((res) => {
+                    console.log(res);
+                    this.searchArr = res;
+                })
+            }
         }
 
     },

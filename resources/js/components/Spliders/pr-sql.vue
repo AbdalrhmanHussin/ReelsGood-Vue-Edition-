@@ -62,11 +62,11 @@ export default ({
                     },
 
                     1100: {
-                        perPage: 4
+                        perPage: 3
                     },
 
                    700: {
-                        perPage: 3
+                        perPage: 2
                     },
 
                     580: {

@@ -22577,6 +22577,9 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     //  [App.vue specific] When App.vue is finish loading finish the progress bar
     this.$Progress.finish();
+    document.addEventListener('click', function () {
+      alert('hello');
+    });
   },
   created: function created() {
     var _this = this;
@@ -22771,7 +22774,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       windowScroll: 0,
       searchArr: [],
       fixedNav: false,
-      navAction: true
+      navAction: true,
+      searchKey: ''
     };
   },
   computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)(['genre'])), {}, {
@@ -22779,7 +22783,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return this.$refs.nav.clientHeight;
     }
   }),
-  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)(['genres'])), {}, {
+  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)(['genres', 'searchGet'])), {}, {
     resizeHandler: function resizeHandler() {
       this.windowWidth = this.window.innerWidth;
     },
@@ -22805,15 +22809,27 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     scrollSet: function scrollSet() {
       this.navbar = true;
       this.windowScroll = this.window.scrollY;
+    },
+    searchIt: function searchIt() {
+      var _this = this;
+
+      if (this.searchKey.length > 0) {
+        this.searchGet({
+          searchKey: this.searchKey
+        }).then(function (res) {
+          console.log(res);
+          _this.searchArr = res;
+        });
+      }
     }
   }),
   mounted: function mounted() {
-    var _this = this;
+    var _this2 = this;
 
     this.genres();
     window.addEventListener('resize', this.resizeHandler);
     window.addEventListener('scroll', function () {
-      _this.scrollNav().scrollSet();
+      _this2.scrollNav().scrollSet();
     });
   }
 });
@@ -23291,10 +23307,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             perPage: 5
           },
           1100: {
-            perPage: 4
+            perPage: 3
           },
           700: {
-            perPage: 3
+            perPage: 2
           },
           580: {
             perPage: 1
@@ -23500,11 +23516,11 @@ __webpack_require__.r(__webpack_exports__);
       if (this.windowWidth >= 1400) {
         this.skeletonBox = 5;
       } else if (1100 < this.windowWidth && this.windowWidth < 1400) {
-        this.skeletonBox = 5;
-      } else if (700 < this.windowWidth && this.windowWidth < 1100) {
         this.skeletonBox = 4;
-      } else if (580 < this.windowWidth && this.windowWidth < 700) {
+      } else if (700 < this.windowWidth && this.windowWidth < 1100) {
         this.skeletonBox = 3;
+      } else if (580 < this.windowWidth && this.windowWidth < 700) {
+        this.skeletonBox = 2;
       } else {
         this.skeletonBox = 1;
       }
@@ -24369,36 +24385,18 @@ var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 var _hoisted_29 = [_hoisted_28];
-
-var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-  type: "search",
-  placeholder: "Where To Stream Anything",
-  "class": "search"
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "search-result mb-2"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
+var _hoisted_30 = {
+  key: 0,
   "class": "fs-13 color-wh mb-0"
-}, "League of leagend "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "d-flex fs-12 color-sv"
-}, "Movie")], -1
-/* HOISTED */
-);
-
-var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "search-result mb-2"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
+};
+var _hoisted_31 = {
+  key: 1,
   "class": "fs-13 color-wh mb-0"
-}, "Tommorrow land"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+};
+var _hoisted_32 = {
+  key: 2,
   "class": "d-flex fs-12 color-sv"
-}, "Movie")], -1
-/* HOISTED */
-);
-
-var _hoisted_33 = [_hoisted_31, _hoisted_32];
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_vue_progress_bar = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("vue-progress-bar");
 
@@ -24530,17 +24528,42 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         name: "list"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_30];
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+            type: "search",
+            placeholder: "Where To Stream Anything",
+            "class": "search",
+            "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+              return $data.searchKey = $event;
+            }),
+            onKeyup: _cache[4] || (_cache[4] = function ($event) {
+              return $options.searchIt();
+            })
+          }, null, 544
+          /* HYDRATE_EVENTS, NEED_PATCH */
+          ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.searchKey]])];
         }),
         _: 1
         /* STABLE */
 
-      }), $data.searchArr.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+      }), $data.searchArr.length > 0 && $data.searchKey.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
         key: 0,
-        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["search-container p-2 position-absolute", {
+        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["search-container p-2 position-absolute zIndex5", {
           'w-100': $data.windowWidth < 922
         }])
-      }, _hoisted_33, 2
+      }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.searchArr, function (search, index) {
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+          "class": "search-result mb-2",
+          key: index
+        }, [search.name ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("h3", _hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(search.name), 1
+        /* TEXT */
+        )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), search.title ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("h3", _hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(search.title), 1
+        /* TEXT */
+        )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), search.media_type ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_32, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(search.media_type), 1
+        /* TEXT */
+        )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+      }), 128
+      /* KEYED_FRAGMENT */
+      ))], 2
       /* CLASS */
       )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])], 2
       /* CLASS */
@@ -26203,7 +26226,8 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_2__.createStore)({
   state: {
     genres: [],
     shows: [],
-    load: false
+    load: false,
+    dropDown: false
   },
   getters: {
     genre: function genre(state) {
@@ -26318,6 +26342,17 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_2__.createStore)({
         });
       })["catch"](function (error) {
         console.error(error);
+      });
+    },
+    searchGet: function searchGet(_ref7, payload) {
+      _objectDestructuringEmpty(_ref7);
+
+      return new Promise(function (resolve, reject) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default().get("/show/search/multi/".concat(payload.searchKey, "/")).then(function (res) {
+          resolve(res.data);
+        })["catch"](function (error) {
+          console.error(error);
+        });
       });
     }
   }

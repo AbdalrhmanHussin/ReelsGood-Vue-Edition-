@@ -8,7 +8,8 @@ const store = createStore({
     state: {
         genres: [],
         shows: [],
-        load: false
+        load: false,
+        dropDown: false
     },
 
     getters: {
@@ -123,6 +124,17 @@ const store = createStore({
             }).catch((error) => {
                 console.error(error)
             })
+        },
+
+        searchGet({},payload)
+        {
+           return new Promise((resolve,reject) => {
+                axios.get(`/show/search/multi/${payload.searchKey}/`).then((res) => {
+                    resolve(res.data)
+                }).catch((error) => {
+                    console.error(error);
+                })
+           })
         }
 
     }

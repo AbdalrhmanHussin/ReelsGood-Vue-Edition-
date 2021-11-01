@@ -104,10 +104,12 @@ class ShowController extends Controller
      * @param type
     */
 
-    public function search(string $type,string $search,int $limit = null)
+    public function search(Request $request,string $type,string $search,int $limit = null)
     {
+        $next = (isset($request->next)) ? $request->next : false;
         $shows = $this->show
                       ->searchFor($type)
+                      ->next($next)
                       ->fetch($search);
 
         if($limit !== null)

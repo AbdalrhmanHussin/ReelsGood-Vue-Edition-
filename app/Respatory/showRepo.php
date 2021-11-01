@@ -253,19 +253,26 @@ class showRepo implements showRepoInterface {
      */
     public function fetch(string | int $search)
     {
-        if($this->get == 'query') {
-            $request = $this->base_url . 'search/multi' . $this->key() . "&language=en-US&page=1&include_adult=false&query=$search".'&page='.$this->page;
+        $request = $this->base_url . 'search/'. $this->get . $this->key() . "&language=en-US&page=1&include_adult=false&query=$search".'&page='.$this->page;
 
-            return Http::get($request)->json();
+        $request =  Http::get($request)->json();
 
-        } else if ($this->get == 'genre') {
-            $request = $this->base_url . '/discover/' . $this->type . '/' . $this->key . "&language=en-US&page=1&include_adult=false&query=$search";
-
-            return Http::get($request)->json();
-
+        if($this->next)
+        {
+            $nextRequest = $this->base_url . 'search/tv' . $this->key() . "&language=en-US&page=1&include_adult=false&query=$search".'&page='.$this->page + 1;
+            $nextRequest =   Http::get($nextRequest)->json();
+            $request = $this->collected('merge',[$request['results'],$nextRequest['results']]);
+        } else {
+            if(!empty($request['results']))
+            {
+                return \array_slice($request['results'],0,7);
+            }
         }
+
+        return $request;
+    }
+
 
     }
  
 
-}

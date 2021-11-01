@@ -77,7 +77,9 @@ nav form input {
     color: var(--white);
 }
 
-nav form input:hover {
+nav form input:hover,
+nav form input:focus,
+nav form input:active {
     outline: none;
 }
 
@@ -108,12 +110,13 @@ nav form.active label{
 
 nav form .search-container {
     width: 96%;
-    height: 354px;
+    height: fit-content;
     position: absolute;
-    background: var(--gray-dark);
+    background: var(--bad-silver-op);
     right: 0;
     border-radius: 5px;
     top: 42px;
+    backdrop-filter: blur(14px);
 }
 
 nav .icon-search,
